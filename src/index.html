@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta tag -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- link stylesheet file -->
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <!-- title -->
+    <title>Les petits plats</title>
+  </head>
+  <body>
+    <!-- Header  -->
+    <header
+      class="header"
+      role="banner"
+      tabindex="0"
+      aria-label="En-tête de la page d'acceuil des petits plats"
+    >
+      <a
+        href="index.html"
+        target="blank"
+        title="Lien vers la page d'acceuil"
+        class="header__link"
+      >
+        <img
+          src="./assets/images/logo.svg"
+          class="header__logo"
+          alt="Logo du site: Les petits plats"
+        />
+      </a>
+    </header>
+
+    <!--  Contenu principal de la page d'accueil  du photographe -->
+    <main
+      id="main"
+      role="main"
+      aria-label="Contenu principal de la page d'accueil du recettes"
+      class="section-center main-section"
+    >
+      <section class="search">
+        <div class="search__input-container">
+          <input
+            type="text"
+            class="search__input"
+            placeholder="Rechercher un ingrédient, un appareil, un ustensile, une recette..."
+          />
+          <button class="search__button">
+            <img src="./assets/images/search.svg" alt="Search" />
+          </button>
+        </div>
+
+        <!-- filter's button -->
+        <section id="filters" tabindex="0" aria-label="Filtres de recherche">
+          <div class="filter__ingredients"></div>
+          <div class="devices__filter"></div>
+          <div class="ustensils__filter"></div>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="index.js"></script>
+    <script type="module" src="dex.js"></script>
+    <!-- <script type="module" src="components/create_filters.js"></script> -->
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "les-petits-plats",
+  "version": "1.0.0",
+  "description": "![Logo](/assets/images/logo.svg)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dusty-Hordofel/les-petits-plats.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dusty-Hordofel/les-petits-plats/issues"
+  },
+  "homepage": "https://github.com/Dusty-Hordofel/les-petits-plats#readme"
+}
