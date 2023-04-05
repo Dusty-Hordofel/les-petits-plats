@@ -1,13 +1,16 @@
 /************************************/
 /* GOOGLE FONTS */
 /************************************/
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:wght@400;600;700&display=swap");
+
 /************************************/
 /* CUSTOM PROPERTY*/
 /************************************/
+:root {
+}
 /************************************/
 /* GLOBAL STYLES*/
 /************************************/
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:wght@400;600;700&display=swap");
 *,
 *::before,
 *::after {
@@ -65,6 +68,26 @@ input {
 /************************************/
 /* REUSED STYLE */
 /************************************/
+
+.section-center {
+  width: 86.12vw;
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 /************************************/
 /* KEYFRAMES*/
 /************************************/
@@ -72,13 +95,6 @@ input {
 /* HEADER */
 /************************************/
 .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 86.12vw;
-  max-width: 144rem;
-  margin: 0 auto;
   margin: 4.2rem auto 1.7rem auto;
   background: yellow;
 }
@@ -86,8 +102,9 @@ input {
   width: 26.8rem;
 }
 
-/****************** Home Header ******************/
-/***************** HOME PAGE *******************/
+/************************************/
+/* MAIN */
+/************************************/
 main .search {
   width: 86.12vw;
   max-width: 144rem;
@@ -101,11 +118,17 @@ main .search__input-container {
   align-items: start;
   margin-bottom: 2.5rem;
 }
+
 main .search__input {
   height: 6.9rem;
-  color: #000000;
+  color: black;
+  /* color: #e7e7e7; */
   background: #e7e7e7;
   padding: 2.4rem 8rem 2.4rem 2.4rem;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 main .search__button {
   position: absolute;
@@ -113,9 +136,8 @@ main .search__button {
   background: transparent;
   right: 2.4rem;
   top: 1.75rem;
-  color: red;
 }
 
 /************************************/
 /* FOOTER */
-/************************************//*# sourceMappingURL=main.css.map */
+/************************************/
