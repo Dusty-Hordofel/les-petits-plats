@@ -51,6 +51,10 @@
   box-sizing: border-box;
 }
 
+* {
+  box-shadow: 0 0 0 1px red;
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
@@ -224,6 +228,66 @@ main .search__button {
 
 #filter__ingredients__title--icon--up {
   display: none;
+}
+/************************************/
+/* CARD */
+/************************************/
+.recipes__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+  width: 1302px;
+  margin: 2.5rem auto 2.5rem auto;
+}
+
+.recipe__card__header--image {
+  width: 100%;
+  height: 20rem;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.recipe__card {
+  width: 40.066rem;
+  height: 40.066rem;
+  /* height: 36.4rem; */
+  border-radius: 5px;
+  background: var(--les-petits-plats-grey-1);
+}
+
+.recipe__card__description {
+  padding: 2rem;
+}
+.recipe__card__description--title {
+  font-size: var(--les-petits-plats-fs-2);
+}
+
+/* ingredients details */
+.recipe__card__description__ingredients--container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* height: 38.7rem; */
+}
+
+.recipe__card__description__ingredients {
+  height: 10.5rem;
+  overflow-y: scroll;
+  padding-right: 1rem;
+}
+.recipe__card__description__ingredients--details {
+  height: 10.5rem;
+  overflow-y: scroll;
+}
+
+.recipe__card__description__ingredients--item {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe__card__description--ingredients__item--quantity,
+.recipe__card__description--ingredients__item--unit {
+  margin-left: 5px;
 }
 /************************************/
 /* FOOTER */

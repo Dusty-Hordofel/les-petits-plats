@@ -184,3 +184,135 @@ const filterIngredients = (element) => {
   display: none;
 }
 ```
+
+### 5. Receipe's Cards
+
+- add [data](/data/recipes.json)
+- create [recipesCards](/src/components/recipe_card.js)
+
+```js
+export const recipesCards = (element, recipes) => {
+  element.innerHTML = `<ul class="recipes__container">
+    ${recipes
+      .map((recipe) => {
+        const {
+          id,
+          name,
+          servings,
+          ingredients,
+          time,
+          description,
+          appliance,
+          ustensils,
+        } = recipe;
+        return `<li class="recipe__card" id="${id}">
+        <article className="recipe__card" id={id}>
+        <div class="recipe__card__header">
+          <img
+            src="assets/images/img.png" alt="blank image"
+            alt={recipe.title}
+            class="recipe__card__header--image"
+          />
+          </div>
+          <div class="recipe__card__description">
+          <div class="recipe__card__description--title flex-row">
+          <p id="recipe__title">
+          ${recipe.name}
+          </p>
+          <p id="recipe__time">
+          <span class="fa-regular fa-clock">  ${time}</span>  min
+          </p>
+          </div>
+          <div class="recipe__card__description__ingredients--container">
+        <ul class="recipe__card__description__ingredients">
+        ${ingredients
+          .map((ingrediento) => {
+            const { ingredient, quantity, unit } = ingrediento;
+            return `
+            <li class="recipe__card__description__ingredients--item">
+            <p class="recipe__card__description--ingredients__item--name"><b>${
+              ingredient ? ingredient : ""
+            }</b>${quantity ? " : " : " "}</p>
+            <p class="recipe__card__description--ingredients__item--quantity">${
+              quantity ? quantity : ""
+            }</p>
+            <p class="recipe__card__description--ingredients__item--unit">${
+              unit ? unit : ""
+            }</p>
+            </li>`;
+          })
+          .join("")}
+        </ul>
+        <div class="recipe__card__description__ingredients--details">${description}</div>
+        </div>
+
+      </article>
+        </li>`;
+      })
+      .join("")}
+    </ul>
+    </div>`;
+};
+```
+
+- style [recipesCards](/src/components/recipe_card.js)
+
+```css
+.recipes__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+  width: 1302px;
+  margin: 2.5rem auto 2.5rem auto;
+}
+
+.recipe__card__header--image {
+  width: 100%;
+  height: 20rem;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.recipe__card {
+  width: 40.066rem;
+  height: 40.066rem;
+  /* height: 36.4rem; */
+  border-radius: 5px;
+  background: var(--les-petits-plats-grey-1);
+}
+
+.recipe__card__description {
+  padding: 2rem;
+}
+.recipe__card__description--title {
+  font-size: var(--les-petits-plats-fs-2);
+}
+
+/* ingredients details */
+.recipe__card__description__ingredients--container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* height: 38.7rem; */
+}
+
+.recipe__card__description__ingredients {
+  height: 10.5rem;
+  overflow-y: scroll;
+  padding-right: 1rem;
+}
+.recipe__card__description__ingredients--details {
+  height: 10.5rem;
+  overflow-y: scroll;
+}
+
+.recipe__card__description__ingredients--item {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe__card__description--ingredients__item--quantity,
+.recipe__card__description--ingredients__item--unit {
+  margin-left: 5px;
+}
+```
