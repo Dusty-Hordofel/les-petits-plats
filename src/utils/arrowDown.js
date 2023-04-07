@@ -14,7 +14,7 @@ const arrowDown = () => {
   //expand the ingredients container
   getElement(".filter__ingredients--container").style.width = "667px";
   //display the list of ingredients
-
+  getElement(".filter__ingredients--list").style.display = "flex";
   // show search input
   // show the list of ingredients
   //display the list of ingredients
@@ -31,7 +31,8 @@ const arrowUp = () => {
   getElement("#filter__ingredients__title--icon--up").style.display = "none";
   //reduce the ingredients container
   getElement(".filter__ingredients--container").style.width = "17rem";
-
+  //display the list of ingredients
+  getElement(".filter__ingredients--list").style.display = "none";
   // show search input
   // show the list of ingredients
   //display the list of ingredients

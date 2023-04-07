@@ -181,11 +181,12 @@ main .search__button {
 /************************************/
 .filter__ingredients--container {
   width: 17rem;
-  height: 6.9rem;
+  /* height: 6.9rem; */
   background: var(--les-petits-plats-blue);
   border-radius: 5px;
   padding: 1.5rem 2.4rem;
   transition: all 0.3s ease-in-out;
+  /* display: flex; */
 }
 
 .filter__ingredients__title {
@@ -288,6 +289,10 @@ main .search__button {
 .recipe__card__description--ingredients__item--quantity,
 .recipe__card__description--ingredients__item--unit {
   margin-left: 5px;
+}
+
+.filter__ingredients--list {
+  display: none;
 }
 /************************************/
 /* FOOTER */

@@ -316,3 +316,5 @@ export const recipesCards = (element, recipes) => {
   margin-left: 5px;
 }
 ```
+
+### 6. Filtering test

@@ -12,3 +12,10 @@ const getRecipesData = async () => {
 getRecipesData();
 
 export { getRecipesData };
+
+const ingredients = async () => {
+  const recipes = await getRecipesData();
+  console.log("🚀 ~ file: api.js:18 ~ ingredients ~ recipes:", recipes);
+};
+
+ingredients();
