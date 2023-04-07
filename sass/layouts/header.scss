@@ -1,0 +1,14 @@
+/************************************/
+/* HEADER */
+/************************************/
+
+.header {
+  @include flex;
+  @include section-center;
+  margin: 4.2rem auto 1.7rem auto;
+  background: yellow;
+  &__logo {
+    width: 26.8rem;
+  }
+}
+/****************** Home Header ******************/

@@ -1,0 +1,69 @@
+/************************************/
+/* GLOBAL STYLES*/
+/************************************/
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:wght@400;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background: $les-petits-plats-white;
+  font-size: $les-petits-plats-fs-1;
+  color: $les-petits-plats-black;
+}
+
+a {
+  text-decoration: none;
+  color: $les-petits-plats-black;
+}
+
+li {
+  list-style: none;
+}
+
+img,
+button,
+a {
+  display: block;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+span {
+  display: inline-block;
+}
+
+input {
+  display: block;
+  width: 100%;
+  font: inherit;
+  border: none;
+  border-radius: 5px;
+  font-size: $les-petits-plats-fs-2;
+}
+
+/************************************/
+/* REUSED STYLE */
+/************************************/
+
+// .section-center {
+//   width: 100%;
+//   max-width: 160rem;
+//   margin: 0 auto;
+// }
