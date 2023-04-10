@@ -1,5 +1,4 @@
 import { displayIngredients } from "./components/create_filters.js";
-import { lolo } from "./dex.js";
 import { recipesCards } from "./components/recipe_card.js";
 import { getRecipesData } from "./api/api.js";
 import { filterSearch } from "./filters/search.js";
