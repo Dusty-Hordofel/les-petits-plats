@@ -5,12 +5,12 @@ export const recipesCards = (element, recipes) => {
         const {
           id,
           name,
-          servings,
+          /*servings,*/
           ingredients,
           time,
           description,
-          appliance,
-          ustensils,
+          /*appliance,
+          ustensils,*/
         } = recipe;
         return `<li class="recipe__card" id="${id}">
         <article className="recipe__card" id={id}>
@@ -24,7 +24,7 @@ export const recipesCards = (element, recipes) => {
           <div class="recipe__card__description">
           <div class="recipe__card__description--title flex-row">
           <p id="recipe__title">
-          ${recipe.name}
+          ${name}
           </p>
           <p id="recipe__time">
           <span class="fa-regular fa-clock">  ${time}</span>  min
