@@ -13,7 +13,7 @@ const getRecipesData = async () => {
   // return data;
 };
 
-getRecipesData();
+// getRecipesData();
 // console.log(recipes);
 // console.log(recipes);
 // async function getDataJson() {
@@ -38,4 +38,4 @@ getRecipesData();
 
 // ingredients();
 
-// export { getRecipesData, ingredients };
+export { getRecipesData };

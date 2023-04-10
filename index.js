@@ -1,17 +1,18 @@
 import { displayIngredients } from "./components/create_filters.js";
-// import { recipesCards } from "./components/recipe_card.js";
-// import { getRecipesData } from "./api/api.js";
+import { recipesCards } from "./components/recipe_card.js";
+import { getRecipesData } from "./api/api.js";
 // import { filterSearch } from "./filters/search.js";
 // import { ingredientsList } from "./components/ingredients_list.js";
 
 displayIngredients(document.querySelector(".filter__ingredients"));
 
 //display the list of recipes
-/*const displayRecipes = async () => {
+const displayRecipes = async () => {
   const recipes = await getRecipesData();
+  console.log("🚀 ~ file: index.js:12 ~ displayRecipes ~ recipes:", recipes);
   recipesCards(getElement("#recipes"), recipes);
 };
-displayRecipes();*/
+displayRecipes();
 
 //display the list of filtered recipes
 /*const displayFilteredRecipes = async () => {
