@@ -9,7 +9,7 @@ const getRecipesData = async () => {
   console.log("🚀 ~ file: api.js:9 ~ getRecipesData ~ recipes:", recipes);
   return recipes;
 };
-getRecipesData();
+// getRecipesData();
 
 const ingredients = async () => {
   const recipes = await getRecipesData();
@@ -18,4 +18,4 @@ const ingredients = async () => {
 
 ingredients();
 
-export { getRecipesData };
+export { getRecipesData, ingredients };
