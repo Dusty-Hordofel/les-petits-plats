@@ -1,28 +1,28 @@
 import { displayIngredients } from "./components/create_filters.js";
-import { recipesCards } from "./components/recipe_card.js";
-import { getRecipesData } from "./api/api.js";
-import { filterSearch } from "./filters/search.js";
-import { ingredientsList } from "./components/ingredients_list.js";
+// import { recipesCards } from "./components/recipe_card.js";
+// import { getRecipesData } from "./api/api.js";
+// import { filterSearch } from "./filters/search.js";
+// import { ingredientsList } from "./components/ingredients_list.js";
 
 displayIngredients(document.querySelector(".filter__ingredients"));
 
 //display the list of recipes
-const displayRecipes = async () => {
+/*const displayRecipes = async () => {
   const recipes = await getRecipesData();
   recipesCards(getElement("#recipes"), recipes);
 };
-displayRecipes();
+displayRecipes();*/
 
 //display the list of filtered recipes
-const displayFilteredRecipes = async () => {
+/*const displayFilteredRecipes = async () => {
   const recipes = await getRecipesData();
   filterSearch(recipes);
 };
 
-displayFilteredRecipes();
+displayFilteredRecipes();*/
 
 // list of ingredients
-export const displayFilterIngredients = (data, inputValue) => {
+/*export const displayFilterIngredients = (data, inputValue) => {
   const ingredients = [
     ...new Set(
       data
@@ -55,15 +55,15 @@ const displayRetrievedIngredients = async () => {
   displayFilterIngredients(recipes);
 };
 
-displayRetrievedIngredients();
+displayRetrievedIngredients();*/
 
 //display the list of ingredients
-const displayIngredientsList = async () => {
+/*const displayIngredientsList = async () => {
   const recipes = await getRecipesData();
   ingredientsList(getElement(".filter__ingredients--list"), recipes);
 };
 
-// displayIngredientsList();
+displayIngredientsList();*/
 
 /*
 
