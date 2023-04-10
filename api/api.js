@@ -1,7 +1,9 @@
 const getRecipesPromise = async () => {
   const response = await fetch("../recipes.json");
-  const data = await response.json();
-  return data;
+  const text = await response.text();
+  const json = JSON.parse(text);
+  // const data = await response.json();
+  return json;
 };
 
 const getRecipesData = async () => {

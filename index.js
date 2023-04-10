@@ -6,7 +6,6 @@ import { ingredientsList } from "./components/ingredients_list.js";
 
 displayIngredients(document.querySelector(".filter__ingredients"));
 
-let olive;
 //display the list of recipes
 const displayRecipes = async () => {
   const recipes = await getRecipesData();
