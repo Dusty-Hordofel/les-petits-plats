@@ -317,4 +317,33 @@ export const recipesCards = (element, recipes) => {
 }
 ```
 
-### 6. Filtering test
+### 6. Search Ingredients Filter
+
+![ingredientsList](/assets/images/ingredients.png)
+
+- create [displayIngredientsList](/index.js)
+
+```js
+/display the list of ingredients
+const displayIngredientsList = async () => {
+  //get the form and the input
+  const form = getElement(".search__input-ingredients");
+  const nameInput = getElement("#ingredients-input");
+
+  // list of ingredients
+  const recipes = await getRecipesData();
+
+  //recuperer la valeur de l'input et afficher la liste des ingrédients
+  form.addEventListener("keyup", function () {
+    //get the value of the input
+    const value = nameInput.value;
+    //filter the data based on the value of the input
+    const ingredients = filteredIngredients(recipes, value);
+    //display filtered data in the receipes container
+    ingredientsList(getElement(".filter__ingredients--list"), ingredients);
+  });
+};
+
+displayIngredientsList();
+
+```
