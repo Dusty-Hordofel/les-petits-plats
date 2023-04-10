@@ -1,4 +1,4 @@
-// import { recipesCards } from "../components/recipe_card.js";
+import { recipesCards } from "../components/recipe_card.js";
 
 export const filterSearch = (data) => {
   //get the form and the input
