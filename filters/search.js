@@ -1,6 +1,6 @@
 // import { recipesCards } from "../components/recipe_card.js";
 
-/*export*/ const filterSearch = (data) => {
+export const filterSearch = (data) => {
   //get the form and the input
   const form = getElement(".search__input-container");
   const nameInput = getElement(".search__input");
