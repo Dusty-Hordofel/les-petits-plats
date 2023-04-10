@@ -1,20 +1,15 @@
 export function ingredientsList(element, recipes) {
-  // console.log(
-  //   "🚀 ~ file: ingredients_list.js:2 ~ ingredientsList ~ ingredients:",
-  //   ingredients
-  // );
   // element.innerHTML = 33;
   element.innerHTML = `
-  <div class="recipe__card__description__ingredients--container">
-    <ul class="recipe__card__description__ingredients">
+  <div class="recipe__list__container">
+    <ul class="recipe__list__container--items">
     ${recipes
-      .map((recipe) => {
-        const { ingredients } = recipe;
-        console.log(
-          "🚀 ~ file: ingredients_list.js:13 ~ .map ~ ingredient:",
-          ingredients
-        );
-      })
+      .map(
+        (recipe, index) =>
+          `<li recipe__list__container--items key=${index}}> ${
+            recipe.charAt(0).toUpperCase() + recipe.slice(1)
+          }</li>`
+      )
       .join("")}
     </ul>
     </div>

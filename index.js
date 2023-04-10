@@ -23,7 +23,7 @@ const displayFilteredRecipes = async () => {
 displayFilteredRecipes();
 
 // list of ingredients
-export const displayFilterIngredients = (data, inputValue) => {
+export const filteredIngredients = (data, inputValue) => {
   const ingredients = [
     ...new Set(
       data
@@ -37,7 +37,7 @@ export const displayFilterIngredients = (data, inputValue) => {
     ),
   ];
   console.log(
-    "🚀 ~ file: index.js:51 ~ displayFilterIngredients ~ ingredients:",
+    "🚀 ~ file: index.js:40 ~ displayFilterIngredients ~ ingredients:",
     ingredients
   );
 
@@ -53,91 +53,46 @@ export const displayFilterIngredients = (data, inputValue) => {
 
 const displayRetrievedIngredients = async () => {
   const recipes = await getRecipesData();
-  displayFilterIngredients(recipes);
+  filteredIngredients(recipes);
 };
 
 displayRetrievedIngredients();
 
 //display the list of ingredients
 const displayIngredientsList = async () => {
+  //get the form and the input
+  const form = getElement(".search__input-ingredients");
+  const nameInput = getElement("#ingredients-input");
+
+  // list of ingredients
   const recipes = await getRecipesData();
-  ingredientsList(getElement(".filter__ingredients--list"), recipes);
+
+  //recuperer la valeur de l'input et afficher la liste des ingrédients
+  form.addEventListener("keyup", function () {
+    //get the value of the input
+    const value = nameInput.value;
+    //filter the data based on the value of the input
+    const ingredients = filteredIngredients(recipes, value);
+    //display filtered data in the receipes container
+    ingredientsList(getElement(".filter__ingredients--list"), ingredients);
+  });
 };
 
 displayIngredientsList();
 
-/*
+//gérer les tags
 
--
--
--
---
--
--
---
--
---
--
--
--
--
---
+//search for ingredients
+// export const inputIngredientSearch = () => {
+//   //get the form and the input
+//   const form = getElement(".search__input-ingredients");
+//   const nameInput = getElement("#ingredients-input");
 
---
--
--
--
--
--
--
--
---
--
--
--
--
--
--
--
--
+//   //recuperer la valeur de l'input
+//   form.addEventListener("keyup", function () {
+//     const value = nameInput.value;
+//     console.log("🚀 ~ file: index.js:92 ~ value:", value);
 
-
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
-
--
-
-
-*/
-// displayRetrievedIngredients()
-
-// function retrieveIngredients(recipes) {
-//     console.log(
-//       "🚀 ~ file: index.js:38 ~ retrieveIngredients ~ recipes:",
-//       recipes
-//     );
-//     const ingredients = new Set();
-//     for (const recipe of recipes) {
-//       recipe.ingredients.forEach((ingredient) => ingredients.add(ingredient));
-//     }
-//     console.log(Array.from(ingredients));
-//     return Array.from(ingredients);
-//   }
-
-// const dd = (ol) => {
-//     console.log("🚀 ~ file: index.js:55 ~ dd ~ ol:", ol);
-//     //   return {};
-//   };
+//     return value;
+//   });
+// };
