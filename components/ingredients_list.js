@@ -6,7 +6,7 @@ export function ingredientsList(element, recipes) {
     ${recipes
       .map(
         (recipe, index) =>
-          `<li recipe__list__container--items key=${index}}> ${
+          `<li class="recipe__container--item" key=${index}} onclick="addTag(${index})"> ${
             recipe.charAt(0).toUpperCase() + recipe.slice(1)
           }</li>`
       )

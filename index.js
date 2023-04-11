@@ -3,6 +3,7 @@ import { recipesCards } from "./components/recipe_card.js";
 import { getRecipesData } from "./api/api.js";
 import { filterSearch } from "./filters/search.js";
 import { ingredientsList } from "./components/ingredients_list.js";
+// import { addFilteredIngredientTag } from "./filters/tags.js";
 
 displayIngredients(document.querySelector(".filter__ingredients"));
 
@@ -82,17 +83,39 @@ displayIngredientsList();
 
 //gérer les tags
 
-//search for ingredients
-// export const inputIngredientSearch = () => {
-//   //get the form and the input
-//   const form = getElement(".search__input-ingredients");
-//   const nameInput = getElement("#ingredients-input");
+const filterItemIngredients = document.getElementsByClassName(
+  "recipe__container--item"
+);
+console.log(
+  "🚀 ~ file: tags.js:5 ~ filterItemIngredients:",
+  filterItemIngredients
+);
 
-//   //recuperer la valeur de l'input
-//   form.addEventListener("keyup", function () {
-//     const value = nameInput.value;
-//     console.log("🚀 ~ file: index.js:92 ~ value:", value);
+//tags already selected
+let ingredientTagAlreadyAdded = false;
 
-//     return value;
-//   });
-// };
+//tags container
+const ingredientTag = document.querySelector(".ingredients__tag");
+const applianceTag = document.querySelector(".appliances__tag");
+const ustensilTag = document.querySelector(".ustensils__tag");
+
+//Add tags
+
+Array.from(filterItemIngredients).forEach((element) => {
+  element.addEventListener("click", (e) => {
+    console.log("Hello People");
+  });
+});
+
+export const addFilteredIngredientTag = (e) => {
+  if (ingredientTagAlreadyAdded === false) {
+    ingredientTagAlreadyAdded === true;
+    Array.from(filterItemIngredients).forEach((element) => {
+      element.addEventListener("click", (e) => {
+        console.log("Hello People");
+      });
+    });
+  }
+};
+
+addFilteredIngredientTag();
