@@ -179,16 +179,24 @@ main .search__button {
 /************************************/
 /* Filters */
 /************************************/
-.filter__ingredients {
+
+#filters {
+  background: yellow;
+  gap: 2rem;
+  /* justify-content: space-between; */
+  display: flex;
+}
+.filter__ingredients,
+.filter__appliances {
   position: relative;
   margin-bottom: 82px;
   height: 53px;
 }
-.filter__ingredients--container {
-  position: absolute;
+.filter__ingredients--container,
+.filter__appliances--container {
+  /* position: absolute; */
   width: 17rem;
   /* height: 6.9rem; */
-  background: var(--les-petits-plats-blue);
   border-radius: 5px;
   padding: 1.5rem 2.4rem;
   transition: all 0.3s ease-in-out;
@@ -198,19 +206,24 @@ main .search__button {
   /* display: flex; */
 }
 
+.filter__ingredients--container {
+  background: var(--les-petits-plats-blue);
+}
+.filter__appliances--container {
+  background: var(--les-petits-plats-green);
+}
+
 #ingredients-input {
   /* background: #ed6454; */
   width: 600px;
   background: transparent;
 }
 
-.recipe__list__container--items {
+.recipe__list__container--items,
+.appliance__list__container--items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   overflow-y: scroll;
-  /* flex-direction: row;
-  flex-wrap: wrap; */
-  /* background: yellow; */
   max-height: 275px;
   gap: 1rem;
   font-size: var(--les-petits-plats-fs-2);
@@ -219,13 +232,15 @@ main .search__button {
   animation: title 0.5s ease-in-out;
 }
 
-.filter__ingredients__title {
+.filter__ingredients__title,
+.filter__appliances__title {
   font-size: var(--les-petits-plats-fs-2);
   color: var(--les-petits-plats-white);
   font-weight: var(--les-petits-plats-fw-700);
   width: 100%;
 }
-.filter__ingredients__title h2 {
+.filter__ingredients__title h2,
+.filter__appliances__title h2 {
   font-size: var(--les-petits-plats-fs-2);
   animation: title 0.5s ease-in-out;
 }
@@ -240,7 +255,9 @@ main .search__button {
 }
 
 #filter__ingredients__title--icon--down,
-#filter__ingredients__title--icon--up {
+#filter__ingredients__title--icon--up,
+#filter__appliances__title--icon--down,
+#filter__appliances__title--icon--up {
   display: block;
   cursor: pointer;
   color: var(--les-petits-plats-white);
@@ -250,14 +267,21 @@ main .search__button {
   background: #ed6454;
   margin-bottom: 20px;
 } */
-.filter__ingredients--input {
+.filter__ingredients--input,
+.filter__appliances--input {
   display: none;
-  background: var(--les-petits-plats-blue);
   color: var(--les-petits-plats-white);
   /* padding-bottom: 20px; */
 }
+.filter__ingredients--input {
+  background: var(--les-petits-plats-blue);
+}
+.filter__appliances--input {
+  background: var(--les-petits-plats-green);
+}
 
-.filter__ingredients--input::placeholder {
+.filter__ingredients--input::placeholder,
+.filter__appliances--input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 

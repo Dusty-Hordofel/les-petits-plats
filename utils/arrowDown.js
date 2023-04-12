@@ -38,6 +38,44 @@ const arrowUp = () => {
   //display the list of ingredients
 };
 
+const arrowApplianceDown = () => {
+  console.log("tu cliques sur la flèche");
+
+  //hide the ingredient button
+  getElement(".filter__appliances__title").style.display = "none";
+  //display appliances input
+  getElement("#appliances-input").style.display = "block";
+  //add focus on appliances  input
+  getElement("#appliances-input").focus();
+  //display the arrow up
+  getElement("#filter__appliances__title--icon--up").style.display = "block";
+  //expand the appliances container
+  getElement(".filter__appliances--container").style.width = "667px";
+  //display the list of appliances
+  getElement(".filter__appliances--list").style.display = "flex";
+  // show search input
+  // show the list of appliances
+  //display the list of appliances
+};
+
+const arrowApplianceUp = () => {
+  console.log("tu cliques sur la flèche");
+
+  //show the ingredient's button
+  getElement(".filter__appliances__title").style.display = "flex";
+  //hide ingredient's input search
+  getElement("#appliances-input").style.display = "none";
+  //hide the arrow up
+  getElement("#filter__appliances__title--icon--up").style.display = "none";
+  //reduce the appliances container
+  getElement(".filter__appliances--container").style.width = "17rem";
+  //display the list of appliances
+  getElement(".filter__appliances--list").style.display = "none";
+  // show search input
+  // show the list of ingredients
+  //display the list of ingredients
+};
+
 //tags already selected
 let ingredientTagAlreadyAdded = false;
 

@@ -597,4 +597,144 @@ console.log(
 );
 ```
 
-### 8. filteredRecipesWithTags
+### 10. filteredApplianceWithTags
+
+- create [arrowApplianceDown](/utils/arrowDown.js)
+
+```js
+const arrowApplianceDown = () => {
+  console.log("tu cliques sur la flèche");
+
+  //hide the ingredient button
+  getElement(".filter__appliances__title").style.display = "none";
+  //display appliances input
+  getElement("#appliances-input").style.display = "block";
+  //add focus on appliances  input
+  getElement("#appliances-input").focus();
+  //display the arrow up
+  getElement("#filter__appliances__title--icon--up").style.display = "block";
+  //expand the appliances container
+  getElement(".filter__appliances--container").style.width = "667px";
+  //display the list of appliances
+  getElement(".filter__appliances--list").style.display = "flex";
+  // show search input
+  // show the list of appliances
+  //display the list of appliances
+};
+```
+
+- create [arrowApplianceUp](/utils/arrowUp.js)
+
+```js
+const arrowApplianceUp = () => {
+  console.log("tu cliques sur la flèche");
+
+  //show the ingredient's button
+  getElement(".filter__appliances__title").style.display = "flex";
+  //hide ingredient's input search
+  getElement("#appliances-input").style.display = "none";
+  //hide the arrow up
+  getElement("#filter__appliances__title--icon--up").style.display = "none";
+  //reduce the appliances container
+  getElement(".filter__appliances--container").style.width = "17rem";
+  //display the list of appliances
+  getElement(".filter__appliances--list").style.display = "none";
+  // show search input
+  // show the list of ingredients
+  //display the list of ingredients
+};
+```
+
+- create [appliancesList](/components/ingredients_list.js)
+
+```js
+const appliancesList = (element, recipes) => {
+  // element.innerHTML = 33;
+  element.innerHTML = `
+  <div class="appliance__list__container">
+    <ul class="appliance__list__container--items">
+    ${recipes
+      .map((recipe, index) => {
+        let applianceId = recipe.charAt(0).toUpperCase() + recipe.slice(1);
+        console.log(
+          "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
+          typeof applianceId
+        );
+        return `<li class="appliance__container--item" key=${index} id="${applianceId}" onclick="addApplianceTag('${applianceId}')"> ${
+          recipe.charAt(0).toUpperCase() + recipe.slice(1)
+        }</li>`;
+      })
+      .join("")}
+    </ul>
+    </div>
+ `;
+};
+```
+
+- create [displayAppliances](/components/create_filters.js)
+
+```js
+export const displayAppliances = (element) => {
+  element.innerHTML = `
+  <div class="filter__appliances--container ">
+  <div class="flex-row input__section">
+  <div class="filter__appliances__title flex-row">
+  <h2 class="filter__appliances__title--name">Appareils</h2>
+  <span class="fa-solid fa-chevron-down filter__appliances__title--icon--down" onclick="arrowApplianceDown()"></span>
+  </div>
+  <form class="search__input-appliances">
+  <input id="appliances-input" type="text" class="filter__appliances--input" placeholder="Selectionner un appareil..." />
+  </form>
+  <span id="filter__appliances__title--icon--up" class="fa-solid fa-chevron-up" onclick="arrowApplianceUp()"></span>
+  </div>
+  <div class="filter__appliances--list"></div>
+  </div>
+`;
+};
+```
+
+- create [addApplianceTag](/utils/tags.js)
+
+```js
+const addApplianceTag = (applianceId) => {
+  console.log(
+    "🚀 ~ file: arrowDown.js:51 ~ addTag ~ applianceId:",
+    applianceId
+  );
+  // console.log("Hello People", index);
+  console.log(" 3333");
+  const filterItemAppliances = document.getElementById(applianceId);
+  console.log(
+    "🚀 ~ file: index.js:59 ~ test ~ filterItemAppliances:",
+    filterItemAppliances
+  );
+
+  const tagApplianceContainer = document.createElement("div");
+  tagApplianceContainer.setAttribute("class", "appliance__tag");
+
+  const tagAppliance = document.createElement("li");
+  tagAppliance.innerText = filterItemAppliances.innerText;
+  tagAppliance.classList.add("green__tag");
+
+  //create the delete icon
+  const deleteTagIcon = document.createElement("span");
+  deleteTagIcon.classname = "deleteIcon";
+
+  const deleteIconImg = document.createElement("span");
+  deleteIconImg.className = "fa-regular fa-circle-xmark";
+  deleteIconImg.style.cursor = "pointer";
+  deleteIconImg.style.width = "20px";
+  //remove the tag
+  deleteIconImg.addEventListener("click", () => {
+    tagApplianceContainer.remove();
+    return false;
+  });
+
+  ingredientTag.appendChild(tagApplianceContainer);
+  tagApplianceContainer.appendChild(tagAppliance);
+  tagApplianceContainer.appendChild(deleteTagIcon);
+  deleteTagIcon.appendChild(deleteIconImg);
+};
+```
+
+### 11. filteredApplianceWithTags (part 2)

@@ -1,8 +1,14 @@
-import { displayIngredients } from "./components/create_filters.js";
+import {
+  displayIngredients,
+  displayAppliances,
+} from "./components/create_filters.js";
 // import { recipesCards } from "./components/recipe_card.js";
 import { getRecipesData } from "./api/api.js";
 // import { filterSearch } from "./filters/search.js";
-import { ingredientsList } from "./components/ingredients_list.js";
+import {
+  ingredientsList,
+  appliancesList,
+} from "./components/ingredients_list.js";
 // import { addFilteredIngredientTag } from "./filters/tags.js";
 
 //store data to the local storage
@@ -15,6 +21,7 @@ storeData();
 // console.log(getStorageItem("recipes"));
 
 displayIngredients(document.querySelector(".filter__ingredients"));
+displayAppliances(document.querySelector(".filter__appliances"));
 
 //display the list of recipes
 const displayRecipes = async () => {
@@ -90,21 +97,24 @@ const displayIngredientsList = async () => {
 
 displayIngredientsList();
 
-//gérer les tags
+//display appliance list
+const displayAppliancesList = async () => {
+  //get the form and the input
+  const form = getElement(".search__input-appliances");
+  const nameInput = getElement("#appliances-input");
 
-// const filterItemIngredients = document.getElementsByClassName(
-//   "recipe__container--item"
-// );
-// console.log(
-//   "🚀 ~ file: tags.js:5 ~ filterItemIngredients:",
-//   filterItemIngredients
-// );
+  // list of ingredients
+  const recipes = await getRecipesData();
 
-// const testFunction = async () => {
-//   // list of ingredients
-//   const recipes = await getRecipesData();
-//   console.log(filteredRecipesWithTags(recipes));
-//   // filteredRecipesWithTags(recipes);
-// };
+  //recuperer la valeur de l'input et afficher la liste des ingrédients
+  form.addEventListener("keyup", function () {
+    //get the value of the input
+    const value = nameInput.value;
+    //filter the data based on the value of the input
+    const appliances = applianceListToFilter(recipes, value);
+    //display filtered data in the receipes container
+    appliancesList(getElement(".filter__appliances--list"), appliances);
+  });
+};
 
-// testFunction();
+displayAppliancesList();
