@@ -8,7 +8,7 @@
 const getRecipesData = async () => {
   const response = await fetch("data/recipes.json");
   let recipes = (await response.json()).recipes;
-  // console.log("🚀 ~ file: api.js:10 ~ getDataJson ~ recipes:", recipes);
+  console.log("🚀 ~ file: api.js:10 ~ getDataJson ~ recipes:", recipes);
   return recipes;
   // return data;
 };
