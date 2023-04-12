@@ -1,4 +1,4 @@
-const displayIngredients = (element) => {
+export const displayIngredients = (element) => {
   element.innerHTML = `
   <div class="filter__ingredients--container ">
   <div class="flex-row input__section">
@@ -16,4 +16,4 @@ const displayIngredients = (element) => {
 `;
 };
 
-export { displayIngredients };
+// export { displayIngredients };

@@ -1,7 +1,3 @@
-const test = () => {
-  console.log("Hello People");
-};
-
 // // select all tags
 // const filterItemIngredients = document.getElementsByClassName(
 //   "recipe__container--item"
@@ -31,3 +27,4 @@ const test = () => {
 //     });
 //   }
 // };
+// testFunction();

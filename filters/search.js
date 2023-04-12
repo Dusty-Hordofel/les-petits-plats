@@ -1,6 +1,6 @@
-import { recipesCards } from "../components/recipe_card.js";
+// import { recipesCards } from "../components/recipe_card.js";
 
-export const filterSearch = (data) => {
+/*export*/ const filterSearch = (data) => {
   //get the form and the input
   const form = getElement(".search__input-container");
   const nameInput = getElement(".search__input");
@@ -13,7 +13,15 @@ export const filterSearch = (data) => {
     if (value) {
       //filter the data based on the value of the input
       const newData = data.filter((receipe) => {
-        let { name, appliance, description, ustensils } = receipe;
+        let { name, appliance, ingredients, description, ustensils } = receipe;
+        console.log(
+          "🚀 ~ file: search.js:17 ~ newData ~ ustensils:",
+          ustensils
+        );
+        // console.log(
+        //   "🚀 ~ file: search.js:17 ~ newData ~ ingredients:",
+        //   ingredients
+        // );
         // console.log(
         //   "🚀 ~ file: search.js:17 ~ newData ~ ustensils:",
         //   ustensils

@@ -1,16 +1,25 @@
 import { displayIngredients } from "./components/create_filters.js";
-import { recipesCards } from "./components/recipe_card.js";
+// import { recipesCards } from "./components/recipe_card.js";
 import { getRecipesData } from "./api/api.js";
-import { filterSearch } from "./filters/search.js";
+// import { filterSearch } from "./filters/search.js";
 import { ingredientsList } from "./components/ingredients_list.js";
 // import { addFilteredIngredientTag } from "./filters/tags.js";
+
+//store data to the local storage
+const storeData = async () => {
+  const recipes = await getRecipesData();
+  setStorageItem("recipes", recipes);
+};
+storeData();
+
+// console.log(getStorageItem("recipes"));
 
 displayIngredients(document.querySelector(".filter__ingredients"));
 
 //display the list of recipes
 const displayRecipes = async () => {
   const recipes = await getRecipesData();
-  console.log("🚀 ~ file: index.js:12 ~ displayRecipes ~ recipes:", recipes);
+  // console.log("🚀 ~ file: index.js:12 ~ displayRecipes ~ recipes:", recipes);
   recipesCards(getElement("#recipes"), recipes);
 };
 displayRecipes();
@@ -83,39 +92,19 @@ displayIngredientsList();
 
 //gérer les tags
 
-const filterItemIngredients = document.getElementsByClassName(
-  "recipe__container--item"
-);
-console.log(
-  "🚀 ~ file: tags.js:5 ~ filterItemIngredients:",
-  filterItemIngredients
-);
+// const filterItemIngredients = document.getElementsByClassName(
+//   "recipe__container--item"
+// );
+// console.log(
+//   "🚀 ~ file: tags.js:5 ~ filterItemIngredients:",
+//   filterItemIngredients
+// );
 
-//tags already selected
-let ingredientTagAlreadyAdded = false;
+// const testFunction = async () => {
+//   // list of ingredients
+//   const recipes = await getRecipesData();
+//   console.log(filteredRecipesWithTags(recipes));
+//   // filteredRecipesWithTags(recipes);
+// };
 
-//tags container
-const ingredientTag = document.querySelector(".ingredients__tag");
-const applianceTag = document.querySelector(".appliances__tag");
-const ustensilTag = document.querySelector(".ustensils__tag");
-
-//Add tags
-
-Array.from(filterItemIngredients).forEach((element) => {
-  element.addEventListener("click", (e) => {
-    console.log("Hello People");
-  });
-});
-
-export const addFilteredIngredientTag = (e) => {
-  if (ingredientTagAlreadyAdded === false) {
-    ingredientTagAlreadyAdded === true;
-    Array.from(filterItemIngredients).forEach((element) => {
-      element.addEventListener("click", (e) => {
-        console.log("Hello People");
-      });
-    });
-  }
-};
-
-addFilteredIngredientTag();
+// testFunction();

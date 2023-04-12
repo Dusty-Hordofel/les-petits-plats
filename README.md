@@ -324,7 +324,7 @@ export const recipesCards = (element, recipes) => {
 - create [displayIngredientsList](/index.js)
 
 ```js
-/display the list of ingredients
+//display the list of ingredients
 const displayIngredientsList = async () => {
   //get the form and the input
   const form = getElement(".search__input-ingredients");
@@ -345,7 +345,6 @@ const displayIngredientsList = async () => {
 };
 
 displayIngredientsList();
-
 ```
 
 ### 7. Tags
@@ -392,5 +391,123 @@ const addTag = (index) => {
   tagIngredientContainer.appendChild(deleteTagIcon);
   deleteTagIcon.appendChild(deleteIconImg);
   // liveSearch();
+};
+```
+
+### 8. filteredRecipesWithTags
+
+```js
+const filteredRecipesWithTags = (recipesToFilter) => {
+  /* Faire des tableaux des items afficher pour chaque filtre */
+  const taggedIngredientsDOM = Array.from(
+    document.querySelectorAll(".ingredients__tag .ingredient__tag .blue__tag")
+  );
+  console.log(
+    "🚀 ~ file: arrowDown.js:100 ~ filteredRecipesWithTags ~ taggedIngredientsDOM:",
+    taggedIngredientsDOM
+  );
+
+  let recipesToDisplay = []; // array of recipes to display
+  let taggedIngredients = []; // array of ingredients to filter
+
+  // create an array of text of tagged ingredients using the array of DOM elements
+  taggedIngredients = taggedIngredientsDOM.map(
+    (taggedIngredient) => taggedIngredient.innerText
+  );
+  console.log(
+    "🚀 ~ file: arrowDown.js:111 ~ filteredRecipesWithTags ~ taggedIngredients:",
+    taggedIngredients
+  );
+
+  //array of recipes to filter : recipesToFilter is the array of recipes to filter we get from the API
+  recipesToDisplay = recipesToFilter.filter((recipe) => {
+    let recipeIsMatching = false;
+    let ingredientIsMatching = false;
+
+    let ingredientsMatching = 0;
+
+    let ingredientsInTheRecipe = [];
+
+    // get all the ingredients in the recipe:we will have list of ingredients
+    ingredientsInTheRecipe = recipe.ingredients.map(({ ingredient }) => {
+      return ingredient;
+    });
+    console.log(
+      "🚀 ~ file: arrowDown.js:129 ~ recipesToDisplay=recipesToFilter.filter ~ ingredientsInTheRecipe:",
+      ingredientsInTheRecipe
+    );
+
+    // check if ingredientsInTheRecipe contains tagged ingredients and count them
+    if (taggedIngredients.length > 0) {
+      taggedIngredients.forEach((taggedIngredient) => {
+        console.log(
+          "🚀 ~ file: arrowDown.js:138 ~ taggedIngredients.forEach ~ ingredientsMatching:",
+          ingredientsMatching,
+          ingredientsInTheRecipe
+        );
+        if (ingredientsInTheRecipe.includes(taggedIngredient)) {
+          console.log(
+            "🚀 ~ file: arrowDown.js:144 ~ taggedIngredients.forEach ~ ingredientsMatching:",
+            ingredientsMatching,
+            ingredientsInTheRecipe
+          );
+          ingredientsMatching += 1;
+        }
+      });
+    }
+
+    // if all the tagged ingredients are in the recipe, the recipe is matching
+    if (ingredientsMatching === taggedIngredients.length) {
+      ingredientIsMatching = true;
+    }
+
+    // if the recipe is matching, we add it to the array of recipes to display
+    if (ingredientIsMatching === true) {
+      recipeIsMatching = true;
+    }
+    return recipeIsMatching;
+  });
+
+  filterAll(recipesToDisplay);
+  return recipesToDisplay;
+};
+// filteredRecipesWithTags();
+const filterAll = (recipes) => {
+  const ingredientsListDOM = document.querySelector(
+    ".recipe__list__container--items"
+  );
+
+  const ingredientsList = [];
+  //vider la liste des ingredients à chaque ajout de tag
+  ingredientsListDOM.innerHTML = "";
+
+  recipes.map((recipe) => {
+    //gestion des ingredients
+    //si l'ingrédient existe déjà , on ne l'ajoute pas
+    const ingredientsTag = [
+      ...document.querySelectorAll(".ingredient__tag"),
+    ].map((itag) => itag.innerText);
+    //map sur les ingredients de la recette
+    recipe.ingredients.map(({ ingredient }, index) => {
+      //si l'ingrédient n'est pas dans le tableau des tags et n'est pas dans le tableau des ingredients
+      if (
+        !ingredientsTag.includes(ingredient) &&
+        !ingredientsList.includes(ingredient)
+      ) {
+        //ajout de l'ingrédient dans le tableau des ingredients
+        ingredientsList.push(ingredient);
+        //ajout de l'ingrédient dans la liste des ingredients
+        const ingredientItem = document.createElement("li");
+        ingredientItem.className = "recipe__container--item";
+        ingredientItem.setAttribute("key", index);
+        ingredientItem.innerText = ingredient;
+        ingredientItem.setAttribute("id", ingredientItem.textContent);
+        ingredientsListDOM.appendChild(ingredientItem);
+        ingredientItem.addEventListener("click", () => {
+          addTag(ingredientItem.textContent);
+        });
+      }
+    });
+  });
 };
 ```

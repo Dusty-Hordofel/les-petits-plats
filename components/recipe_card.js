@@ -1,4 +1,4 @@
-export const recipesCards = (element, recipes) => {
+/*export*/ const recipesCards = (element, recipes) => {
   element.innerHTML = `<ul class="recipes__container">
     ${recipes
       .map((recipe) => {

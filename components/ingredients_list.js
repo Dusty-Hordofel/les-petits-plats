@@ -4,12 +4,16 @@ export function ingredientsList(element, recipes) {
   <div class="recipe__list__container">
     <ul class="recipe__list__container--items">
     ${recipes
-      .map(
-        (recipe, index) =>
-          `<li class="recipe__container--item" key=${index}} onclick="addTag(${index})"> ${
-            recipe.charAt(0).toUpperCase() + recipe.slice(1)
-          }</li>`
-      )
+      .map((recipe, index) => {
+        let recipeId = recipe.charAt(0).toUpperCase() + recipe.slice(1);
+        console.log(
+          "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
+          typeof recipeId
+        );
+        return `<li class="recipe__container--item" key=${index} id="${recipeId}" onclick="addTag('${recipeId}')"> ${
+          recipe.charAt(0).toUpperCase() + recipe.slice(1)
+        }</li>`;
+      })
       .join("")}
     </ul>
     </div>
