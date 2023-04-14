@@ -227,7 +227,7 @@ main .search__button {
 
 .recipe__list__container--items,
 .appliance__list__container--items,
-.ustensils__list__container--items {
+.ustensil__list__container--items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   overflow-y: scroll;

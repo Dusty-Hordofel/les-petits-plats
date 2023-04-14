@@ -9,6 +9,7 @@ import { getRecipesData } from "./api/api.js";
 import {
   ingredientsList,
   appliancesList,
+  ustensilsList,
 } from "./components/ingredients_list.js";
 // import { addFilteredIngredientTag } from "./filters/tags.js";
 
@@ -159,3 +160,37 @@ const displayAppliancesList = () => {
 };
 
 displayAppliancesList();
+
+//Récupérer et afficher la listes des ustensiles sans filtre
+const displayRetrievedUstensils = () => {
+  console.log(
+    ustensilsList(
+      getElement(".filter__ustensils--list"),
+      ustensilsListToFilter(recipes)
+    )
+  );
+};
+displayRetrievedUstensils();
+
+//Afficher la listes des ustensiles avec ou sans filtre
+const displayUstensilsList = () => {
+  //get the form and the input
+  const form = getElement(".search__input-ustensils");
+  const nameInput = getElement("#ustensils-input");
+
+  // list of ingredients
+  // const recipes = await getRecipesData();
+  const recipes = getStorageItem("recipes");
+
+  //recuperer la valeur de l'input et afficher la liste des ingrédients
+  form.addEventListener("keyup", function () {
+    //get the value of the input
+    const value = nameInput.value;
+    //filter the data based on the value of the input
+    const ustensils = ustensilsListToFilter(recipes, value);
+    //display filtered data in the receipes container
+    appliancesList(getElement(".filter__ustensils--list"), ustensils);
+  });
+};
+
+displayUstensilsList();

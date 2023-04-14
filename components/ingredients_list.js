@@ -41,5 +41,26 @@ const appliancesList = (element, recipes) => {
     </div>
  `;
 };
+const ustensilsList = (element, recipes) => {
+  // element.innerHTML = 33;
+  element.innerHTML = `
+  <div class="ustensil__list__container">
+    <ul class="ustensil__list__container--items">
+    ${recipes
+      .map((recipe, index) => {
+        let ustensilId = recipe.charAt(0).toUpperCase() + recipe.slice(1);
+        console.log(
+          "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
+          typeof ustensilId
+        );
+        return `<li class="ustensil__container--item" key=${index} id="${ustensilId}" onclick="addustensilTag('${ustensilId}')"> ${
+          recipe.charAt(0).toUpperCase() + recipe.slice(1)
+        }</li>`;
+      })
+      .join("")}
+    </ul>
+    </div>
+ `;
+};
 
-export { ingredientsList, appliancesList };
+export { ingredientsList, appliancesList, ustensilsList };

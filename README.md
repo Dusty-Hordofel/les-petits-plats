@@ -834,3 +834,73 @@ const arrowUstensilUp = () => {
   //display the list of ustensils
 };
 ```
+
+## 14. Display Ustensils List
+
+- create [ustensilsList](/components/ingredients_list.js)
+
+```js
+const ustensilsList = (element, recipes) => {
+  // element.innerHTML = 33;
+  element.innerHTML = `
+  <div class="ustensil__list__container">
+    <ul class="ustensil__list__container--items">
+    ${recipes
+      .map((recipe, index) => {
+        let ustensilId = recipe.charAt(0).toUpperCase() + recipe.slice(1);
+        console.log(
+          "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
+          typeof ustensilId
+        );
+        return `<li class="ustensil__container--item" key=${index} id="${ustensilId}" onclick="addustensilTag('${ustensilId}')"> ${
+          recipe.charAt(0).toUpperCase() + recipe.slice(1)
+        }</li>`;
+      })
+      .join("")}
+    </ul>
+    </div>
+ `;
+};
+```
+
+- create [displayRetrievedUstensils](/index.js) to display [displayUstensilsList](/index.js) without input entries
+
+```js
+//Récupérer et afficher la listes des ustensiles sans filtre
+const displayRetrievedUstensils = () => {
+  console.log(
+    ustensilsList(
+      getElement(".filter__ustensils--list"),
+      ustensilsListToFilter(recipes)
+    )
+  );
+};
+displayRetrievedUstensils();
+```
+
+- create [displayUstensilsList](/index.js) to display [displayRetrievedUstensils](/index.js) with or without input entries
+
+```js
+//Afficher la listes des ustensiles avec ou sans filtre
+const displayUstensilsList = () => {
+  //get the form and the input
+  const form = getElement(".search__input-ustensils");
+  const nameInput = getElement("#ustensils-input");
+
+  // list of ingredients
+  // const recipes = await getRecipesData();
+  const recipes = getStorageItem("recipes");
+
+  //recuperer la valeur de l'input et afficher la liste des ingrédients
+  form.addEventListener("keyup", function () {
+    //get the value of the input
+    const value = nameInput.value;
+    //filter the data based on the value of the input
+    const ustensils = ustensilsListToFilter(recipes, value);
+    //display filtered data in the receipes container
+    appliancesList(getElement(".filter__ustensils--list"), ustensils);
+  });
+};
+
+displayUstensilsList();
+```
