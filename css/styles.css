@@ -187,7 +187,8 @@ main .search__button {
   display: flex;
 }
 .filter__ingredients,
-.filter__appliances {
+.filter__appliances,
+.filter__ustensils {
   position: relative;
   margin-bottom: 82px;
   height: 53px;
@@ -229,6 +230,7 @@ main .search__button {
 .appliance__list__container--items,
 .ustensil__list__container--items {
   display: grid;
+  /* background: #68d9a4; */
   grid-template-columns: repeat(3, 1fr);
   overflow-y: scroll;
   max-height: 275px;
@@ -330,6 +332,7 @@ main .search__button {
   background: #ed6454;
   width: 700px;
   display: grid;
+  /* background: yellowgreen; */
   grid-template-columns: repeat(3, 200px);
   /* grid-template-columns: repeat(3, minmax(200px, 1fr)); */
   /* gap: 2rem; */
@@ -349,10 +352,39 @@ main .search__button {
 /************************************/
 .recipes__container {
   display: grid;
+  background: yellow;
   grid-template-columns: repeat(3, 1fr);
   gap: 5rem;
-  width: 1302px;
+  /* width: 1302px; */
+  width: 100%;
   margin: 2.5rem auto 2.5rem auto;
+}
+
+@media (max-width: 900px) {
+  .recipes__container {
+    grid-template-columns: repeat(2, 1fr);
+    background: #68d9a4;
+  }
+}
+@media (max-width: 650px) {
+  #filters {
+    flex-direction: column;
+  }
+}
+
+/* .filter__ingredients,
+.filter__appliances,
+.filter__ustensils {
+  position: relative;
+  margin-bottom: 82px;
+  height: 53px;
+} */
+
+@media (max-width: 600px) {
+  .recipes__container {
+    grid-template-columns: 1fr;
+    background: purple;
+  }
 }
 
 .recipe__card__header--image {
@@ -363,7 +395,8 @@ main .search__button {
 }
 
 .recipe__card {
-  width: 40.066rem;
+  width: 100%;
+  /* width: 40.066rem; */
   height: 40.066rem;
   /* height: 36.4rem; */
   border-radius: 5px;

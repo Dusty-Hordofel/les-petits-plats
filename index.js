@@ -61,10 +61,10 @@ export const filteredIngredients = (data, inputValue) => {
         .sort()
     ),
   ];
-  console.log(
-    "🚀 ~ file: index.js:60 ~ displayFilterIngredients ~ ingredients:",
-    ingredients
-  );
+  // console.log(
+  //   "🚀 ~ file: index.js:60 ~ displayFilterIngredients ~ ingredients:",
+  //   ingredients
+  // );
 
   // Si on a un element dans l'input, on filtre les ingrédients
   if (inputValue) {
@@ -73,10 +73,10 @@ export const filteredIngredients = (data, inputValue) => {
     );
   }
   // Sinon on retourne tous les ingrédients
-  console.log(
-    "🚀 ~ file: index.js:72 ~ displayFilterIngredients ~ ingredients:",
-    ingredients
-  );
+  // console.log(
+  //   "🚀 ~ file: index.js:72 ~ displayFilterIngredients ~ ingredients:",
+  //   ingredients
+  // );
   return ingredients;
 };
 
@@ -84,17 +84,17 @@ export const filteredIngredients = (data, inputValue) => {
 const displayRetrievedIngredients = () => {
   // const recipes = await getRecipesData();
   // const recipes = getStorageItem("recipes");
-  console.log(
-    "🚀 ~ file: index.js:83 ~ displayRetrievedIngredients ~ recipes:",
-    recipes
+  // console.log(
+  //   "🚀 ~ file: index.js:83 ~ displayRetrievedIngredients ~ recipes:",
+  //   recipes
+  // );
+  // console.log(filteredIngredients(recipes));
+  // console.log(
+  ingredientsList(
+    getElement(".filter__ingredients--list"),
+    filteredIngredients(recipes)
   );
-  console.log(filteredIngredients(recipes));
-  console.log(
-    ingredientsList(
-      getElement(".filter__ingredients--list"),
-      filteredIngredients(recipes)
-    )
-  );
+  // );
   // const ingredients = filteredIngredients(recipes);
   //display filtered data in the receipes container
   // ingredientsList(getElement(".filter__ingredients--list"), ingredients);
@@ -119,7 +119,7 @@ const displayIngredientsList = () => {
     const value = nameInput.value;
     //filter the data based on the value of the input
     const ingredients = filteredIngredients(recipes, value);
-    console.log("🚀 ~ file: index.js:112 ~ ingredients:", ingredients);
+    // console.log("🚀 ~ file: index.js:112 ~ ingredients:", ingredients);
     //display filtered data in the receipes container
     ingredientsList(getElement(".filter__ingredients--list"), ingredients);
   });
@@ -129,12 +129,12 @@ displayIngredientsList();
 
 //Récupérer et afficher la listes des appareils sans filtre
 const displayRetrievedAppliances = () => {
-  console.log(
-    appliancesList(
-      getElement(".filter__appliances--list"),
-      applianceListToFilter(recipes)
-    )
+  // console.log(
+  appliancesList(
+    getElement(".filter__appliances--list"),
+    applianceListToFilter(recipes)
   );
+  // );
 };
 displayRetrievedAppliances();
 
@@ -163,12 +163,12 @@ displayAppliancesList();
 
 //Récupérer et afficher la listes des ustensiles sans filtre
 const displayRetrievedUstensils = () => {
-  console.log(
-    ustensilsList(
-      getElement(".filter__ustensils--list"),
-      ustensilsListToFilter(recipes)
-    )
+  // console.log(
+  ustensilsList(
+    getElement(".filter__ustensils--list"),
+    ustensilsListToFilter(recipes)
   );
+  // );
 };
 displayRetrievedUstensils();
 
