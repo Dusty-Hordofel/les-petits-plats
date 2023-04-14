@@ -49,3 +49,52 @@ const addApplianceTag = (applianceId) => {
   );
   // filteredRecipesWithTags(getStorageItem("recipes"));
 };
+
+//Add applianceTag
+const addUstensilTag = (ustensilId) => {
+  console.log("🚀 ~ file: arrowDown.js:51 ~ addTag ~ ustensilId:", ustensilId);
+  // console.log("Hello People", index);
+  console.log(" 3333");
+  const filterItemUstensils = document.getElementById(ustensilId);
+  console.log(
+    "🚀 ~ file: index.js:59 ~ test ~ filterItemUstensils:",
+    filterItemUstensils
+  );
+
+  const tagUstensilContainer = document.createElement("div");
+  tagUstensilContainer.setAttribute("class", "ustensil__tag");
+
+  const tagUstensil = document.createElement("li");
+  tagUstensil.innerText = filterItemUstensils.innerText;
+  tagUstensil.classList.add("red__tag");
+
+  //create the delete icon
+  const deleteTagIcon = document.createElement("span");
+  deleteTagIcon.classname = "deleteIcon";
+
+  const deleteIconImg = document.createElement("span");
+  deleteIconImg.className = "fa-regular fa-circle-xmark";
+  deleteIconImg.style.cursor = "pointer";
+  deleteIconImg.style.width = "20px";
+  //remove the tag
+  deleteIconImg.addEventListener("click", () => {
+    tagUstensilContainer.remove();
+
+    // filteredRecipesWithTags(getStorageItem("recipes"));
+    recipesCards(
+      getElement("#recipes"),
+      filteredRecipesWithTags(getStorageItem("recipes"))
+    );
+    return false;
+  });
+
+  ustensilTag.appendChild(tagUstensilContainer);
+  tagUstensilContainer.appendChild(tagUstensil);
+  tagUstensilContainer.appendChild(deleteTagIcon);
+  deleteTagIcon.appendChild(deleteIconImg);
+  recipesCards(
+    getElement("#recipes"),
+    filteredRecipesWithTags(getStorageItem("recipes"))
+  );
+  // filteredRecipesWithTags(getStorageItem("recipes"));
+};

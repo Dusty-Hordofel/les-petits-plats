@@ -53,9 +53,7 @@ const ustensilsList = (element, recipes) => {
           "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
           typeof ustensilId
         );
-        return `<li class="ustensil__container--item" key=${index} id="${ustensilId}" onclick="addustensilTag('${ustensilId}')"> ${
-          recipe.charAt(0).toUpperCase() + recipe.slice(1)
-        }</li>`;
+        return `<li class="ustensil__container--item" key=${index} id="${ustensilId}" onclick="addUstensilTag('${ustensilId}')"> ${recipe}</li>`;
       })
       .join("")}
     </ul>
@@ -63,4 +61,5 @@ const ustensilsList = (element, recipes) => {
  `;
 };
 
+//remplacé "recipe.charAt(0).toUpperCase() + recipe.slice(1)" par "recipe" au niveau du <li></li> pour avoir les noms des ingrédients en minuscule
 export { ingredientsList, appliancesList, ustensilsList };

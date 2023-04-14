@@ -144,11 +144,11 @@ const addTag = (recipeId) => {
   deleteIconImg.addEventListener("click", () => {
     tagIngredientContainer.remove();
     // liveSearch();
-    filteredRecipesWithTags(getStorageItem("recipes"));
-    // recipesCards(
-    //   getElement("#recipes"),
-    //   filteredRecipesWithTags(getStorageItem("recipes"))
-    // );
+    // filteredRecipesWithTags(getStorageItem("recipes"));
+    recipesCards(
+      getElement("#recipes"),
+      filteredRecipesWithTags(getStorageItem("recipes"))
+    );
     return false;
   });
 
@@ -157,11 +157,11 @@ const addTag = (recipeId) => {
   tagIngredientContainer.appendChild(deleteTagIcon);
   deleteTagIcon.appendChild(deleteIconImg);
   // liveSearch();
-  // recipesCards(
-  //   getElement("#recipes"),
-  //   filteredRecipesWithTags(getStorageItem("recipes"))
-  // );
-  filteredRecipesWithTags(getStorageItem("recipes"));
+  recipesCards(
+    getElement("#recipes"),
+    filteredRecipesWithTags(getStorageItem("recipes"))
+  );
+  // filteredRecipesWithTags(getStorageItem("recipes"));
 };
 
 //FAIT: Obtenir la liste des recettes filtrées par les tags
@@ -177,12 +177,12 @@ const filteredRecipesWithTags = (recipesToFilter) => {
   const taggedAppliancesDOM = Array.from(
     document.querySelectorAll(".appliances__tag .appliance__tag .green__tag")
   );
-  // const taggedustensilsDOM = Array.from(
-  //   document.querySelectorAll(".ustensils__tag .ustensil__tag .red__tag")
-  // );
+  const taggedustensilsDOM = Array.from(
+    document.querySelectorAll(".ustensils__tag .ustensil__tag .red__tag")
+  );
   console.log(
-    "🚀 ~ file: arrowDown.js:156 ~ filteredRecipesWithTags ~ taggedAppliancesDOM:",
-    taggedAppliancesDOM
+    "🚀 ~ file: arrowDown.js:183 ~ filteredRecipesWithTags ~ taggedustensilsDOM:",
+    taggedustensilsDOM
   );
 
   let recipesToDisplay = []; // array of recipes to display
@@ -198,16 +198,10 @@ const filteredRecipesWithTags = (recipesToFilter) => {
   taggedAppliances = taggedAppliancesDOM.map(
     (taggedAppliance) => taggedAppliance.innerText
   );
-  console.log(
-    "🚀 ~ file: arrowDown.js:175 ~ filteredRecipesWithTags ~ taggedAppliances:",
-    taggedAppliances
-  );
-  // taggedUstensils = taggedustensilsDOM.map(
-  //   (taggedUstensil) => taggedUstensil.innerText
-  // );
-  console.log(
-    "🚀 ~ file: arrowDown.js:111 ~ filteredRecipesWithTags ~ taggedIngredients:",
-    taggedIngredients
+
+  //création de la liste des tags des ustensiles grace  aux éléments du DOM (taggedustensilsDOM)
+  taggedUstensils = taggedustensilsDOM.map(
+    (taggedUstensil) => taggedUstensil.innerText
   );
 
   //liste des recettes filtrés grace aux tags des ingredients, des appareils et des ustensiles
@@ -231,31 +225,14 @@ const filteredRecipesWithTags = (recipesToFilter) => {
     });
     //Obtenir la liste de tous les appareils contenu dans les recettes grace à  list des recettes en paramètre
     appliancesInTheRecipe.push(recipe.appliance);
-    console.log(
-      "🚀 ~ file: arrowDown.js:209 ~ recipesToDisplay=recipesToFilter.filter ~ appliancesInTheRecipe:",
-      appliancesInTheRecipe
-    );
-    //Obtenir la liste de tous les ustensiles contenu dans les recettes
-    // ustensilsInTheRecipe = recipe.ustensils.map((ustensil) => ustensil);
-    console.log(
-      "🚀 ~ file: arrowDown.js:129 ~ recipesToDisplay=recipesToFilter.filter ~ ingredientsInTheRecipe:",
-      ingredientsInTheRecipe
-    );
+
+    //Obtenir la liste de tous les ustensiles contenu dans les recettes grace à  list des recettes en paramètre
+    ustensilsInTheRecipe = recipe.ustensils.map((ustensil) => ustensil);
 
     // check if ingredientsInTheRecipe contains tagged ingredients and count them
     if (taggedIngredients.length > 0) {
       taggedIngredients.forEach((taggedIngredient) => {
-        console.log(
-          "🚀 ~ file: arrowDown.js:138 ~ taggedIngredients.forEach ~ ingredientsMatching:",
-          ingredientsMatching,
-          ingredientsInTheRecipe
-        );
         if (ingredientsInTheRecipe.includes(taggedIngredient)) {
-          console.log(
-            "🚀 ~ file: arrowDown.js:144 ~ taggedIngredients.forEach ~ ingredientsMatching:",
-            ingredientsMatching,
-            ingredientsInTheRecipe
-          );
           ingredientsMatching += 1;
         }
       });
@@ -265,22 +242,21 @@ const filteredRecipesWithTags = (recipesToFilter) => {
       taggedAppliances.forEach((taggedAppliance) => {
         if (appliancesInTheRecipe.includes(taggedAppliance)) {
           appliancesMatching += 1;
-          console.log(
-            "🚀 ~ file: arrowDown.js:242 ~ taggedAppliances.forEach ~ appliancesInTheRecipe:",
-            appliancesInTheRecipe,
-            appliancesMatching
-          );
         }
       });
     }
     //si le tableau des tags des ustensiles contient un ou des ustensiles, on vérifie que les ustensiles des recettes contiennent les tags des ustensiles
-    // if (taggedUstensils.length > 0) {
-    //   taggedUstensils.forEach((taggedUstensil) => {
-    //     if (ustensilsInTheRecipe.includes(taggedUstensil)) {
-    //       ustensilsMatching += 1;
-    //     }
-    //   });
-    // }
+    if (taggedUstensils.length > 0) {
+      taggedUstensils.forEach((taggedUstensil) => {
+        if (ustensilsInTheRecipe.includes(taggedUstensil)) {
+          ustensilsMatching += 1;
+          console.log(
+            "🚀 ~ file: arrowDown.js:263 ~ taggedUstensils.forEach ~ ustensilsMatching:",
+            ustensilsMatching
+          );
+        }
+      });
+    }
 
     // if all the tagged ingredients are in the recipe, the recipe is matching
     if (ingredientsMatching === taggedIngredients.length) {
@@ -293,18 +269,22 @@ const filteredRecipesWithTags = (recipesToFilter) => {
         applianceIsMatching = true;
       }
     } else applianceIsMatching = true;
-
-    // if (ustensilsMatching === taggedUstensils.length) {
-    //   ustensilIsMatching = true;
-    // }
+    //si le nombre d'ustensils taggés est égal au nombre d'ustensils des recettes correspondant aux tags, alors ustensilIsMatching = true
+    if (ustensilsMatching === taggedUstensils.length) {
+      ustensilIsMatching = true;
+    }
 
     // if the recipe is matching, we add it to the array of recipes to display
-    if (ingredientIsMatching === true && applianceIsMatching === true) {
+    if (
+      ingredientIsMatching === true &&
+      applianceIsMatching === true &&
+      ustensilIsMatching === true
+    ) {
       recipeIsMatching = true;
     }
     return recipeIsMatching;
   });
-  filterAll(recipesToDisplay);
+  // filterAll(recipesToDisplay);
   console.log(
     "🚀 ~ file: arrowDown.js:284 ~ filteredRecipesWithTags ~ recipesToDisplay:",
     recipesToDisplay
@@ -322,11 +302,14 @@ const filterAll = (recipes) => {
   const appliancesListDOM = document.querySelector(
     ".appliance__list__container--items"
   );
-  console.log(
-    "🚀 ~ file: arrowDown.js:298 ~ filterAll ~ appliancesListDOM:",
-    appliancesListDOM
+
+  const ustensilsListDOM = document.querySelector(
+    ".ustensil__list__container--items"
   );
-  // const ustensilsListDOM = document.querySelector( ".ustencil__list__container--items")
+  console.log(
+    "🚀 ~ file: arrowDown.js:329 ~ filterAll ~ ustensilsListDOM:",
+    ustensilsListDOM
+  );
 
   const ingredientsList = [];
   const appliancesList = [];
@@ -335,7 +318,7 @@ const filterAll = (recipes) => {
   //vider la liste des ingredients à chaque ajout de tag
   ingredientsListDOM.innerHTML = "";
   appliancesListDOM.innerHTML = "";
-  // ustensilsListDOM.innerHTML = "";
+  ustensilsListDOM.innerHTML = "";
 
   recipes.map((recipe) => {
     //gestion des ingredients
@@ -392,23 +375,28 @@ const filterAll = (recipes) => {
     }
 
     //gestion des ustensiles
-    // Si l'ustensile existe déjà , on ne l'ajoute pas
-    // const utags = [...document.querySelectorAll(".tag__ustensil")].map(
-    //   (utag) => utag.innerText
-    // );
+    //Si l'ustensile existe déjà , on ne l'ajoute pas
+    const ustensilsTag = [...document.querySelectorAll(".tag__ustensil")].map(
+      (utag) => utag.innerText
+    );
 
     //si l'ustensile n'est pas dans le tableau des tags et n'est pas dans le tableau des ustensiles, on l'ajoute
-    // recipe.ustensils.forEach((ustensil) => {
-    //   if (
-    //     ustensilsList.includes(ustensil) === false &&
-    //     utags.includes(ustensil) === false
-    //   ) {
-    //     ustensilsList.push(ustensil);
-    //     const filterItem = document.createElement("li");
-    //     filterItem.classList.add("filter__ustensils--items");
-    //     filterItem.innerText = ustensil;
-    //     ustensilsBloc.appendChild(filterItem);
-    //   }
-    // });
+    recipe.ustensils.forEach((ustensil) => {
+      if (
+        !ustensilsList.includes(ustensil) &&
+        !ustensilsTag.includes(ustensil)
+      ) {
+        ustensilsList.push(ustensil);
+        const ustensilItem = document.createElement("li");
+        ustensilItem.classList.add("filter__ustensils--items");
+        ustensilItem.innerText = ustensil;
+        // ustensilsBloc.appendChild(filterItem);
+        ustensilsListDOM.appendChild(ustensilItem);
+        console.log(ustensilItem);
+        ustensilItem.addEventListener("click", () => {
+          addApplianceTag(ustensilItem.textContent);
+        });
+      }
+    });
   });
 };
