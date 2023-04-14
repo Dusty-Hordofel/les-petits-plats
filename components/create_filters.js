@@ -34,4 +34,22 @@ export const displayAppliances = (element) => {
 `;
 };
 
+export const displayUstensils = (element) => {
+  element.innerHTML = `
+  <div class="filter__ustensils--container ">
+  <div class="flex-row input__section">
+  <div class="filter__ustensils__title flex-row">
+  <h2 class="filter__ustensils__title--name">Ustensiles</h2>
+  <span class="fa-solid fa-chevron-down filter__ustensils__title--icon--down" onclick="arrowApplianceDown()"></span>
+  </div>
+  <form class="search__input-ustensils">
+  <input id="ustensils-input" type="text" class="filter__ustensils--input" placeholder="Selectionner un appareil..." />
+  </form>
+  <span id="filter__ustensils__title--icon--up" class="fa-solid fa-chevron-up" onclick="arrowApplianceUp()"></span>
+  </div>
+  <div class="filter__ustensils--list"></div>
+  </div>
+`;
+};
+
 // export { displayIngredients };
