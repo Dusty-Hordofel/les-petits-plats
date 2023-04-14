@@ -171,7 +171,7 @@ const filterIngredients = (element) => {
 }
 
 .filter__ingredients--input {
-  display: none;
+  /* display: none; */
   background: var(--les-petits-plats-blue);
   color: var(--les-petits-plats-white);
 }
@@ -738,3 +738,32 @@ const addApplianceTag = (applianceId) => {
 ```
 
 ### 11. filteredApplianceWithTags (part 2)
+
+- Ajouter la gestion ds [appareils](/utils/arrowDown.js)
+
+```js
+//gestion des appareils
+//si l'appareil existe déjà , on ne l'ajoute pas
+const appliancesTag = [...document.querySelectorAll(".appliance__tag")].map(
+  (applianceTag) => applianceTag.innerText
+);
+console.log(
+  "🚀 ~ file: arrowDown.js:350 ~ recipes.map ~ ingredientsTag:",
+  appliancesTag
+);
+//si l'appareil n'est pas dans le tableau des tags et n'est pas dans le tableau des appareils, on l'ajoute
+if (
+  !appliancesList.includes(recipe.appliance) &&
+  !appliancesTag.includes(recipe.appliance)
+) {
+  appliancesList.push(recipe.appliance);
+  const applianceItem = document.createElement("li");
+  applianceItem.classList.add("appliance__container--item");
+  applianceItem.innerText = recipe.appliance;
+  appliancesListDOM.appendChild(applianceItem);
+  console.log(applianceItem);
+  applianceItem.addEventListener("click", () => {
+    addApplianceTag(applianceItem.textContent);
+  });
+}
+```

@@ -51,9 +51,9 @@
   box-sizing: border-box;
 }
 
-/* * {
+* {
   box-shadow: 0 0 0 1px red;
-} */
+}
 
 html {
   font-size: 62.5%;
@@ -195,12 +195,14 @@ main .search__button {
 .filter__ingredients--container,
 .filter__appliances--container {
   /* position: absolute; */
+  /* background: #ed6454; */
   width: 17rem;
-  /* height: 6.9rem; */
+  height: 6.9rem;
   border-radius: 5px;
-  padding: 1.5rem 2.4rem;
+  padding: 2.5rem 2.4rem;
   transition: all 0.3s ease-in-out;
   max-height: 397px;
+  overflow: hidden;
   /* overflow-y: scroll; */
   z-index: 20;
   /* display: flex; */
@@ -285,20 +287,21 @@ main .search__button {
   color: rgba(255, 255, 255, 0.5);
 }
 
-#filter__ingredients__title--icon--up {
+#filter__ingredients__title--icon--up,
+#filter__appliances__title--icon--up {
   display: none;
 }
 
 /* tags */
 .ingredients__tag {
-  background: #68d9a4;
+  /* background: #68d9a4; */
 }
-.ingredient__tag {
+.ingredient__tag,
+.appliance__tag {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 170px;
-  background: var(--les-petits-plats-blue);
   color: var(--les-petits-plats-white);
   font-size: 14px;
   padding: 10px;
@@ -306,6 +309,21 @@ main .search__button {
   /* background: yellow; */
   margin-bottom: 20px;
   gap: 5px;
+}
+#selected__tags {
+  background: #ed6454;
+  width: 700px;
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  /* grid-template-columns: repeat(3, minmax(200px, 1fr)); */
+  /* gap: 2rem; */
+  margin-bottom: 30px;
+}
+.ingredient__tag {
+  background: var(--les-petits-plats-blue);
+}
+.appliance__tag {
+  background: var(--les-petits-plats-green);
 }
 /************************************/
 /* CARD */
@@ -369,7 +387,7 @@ main .search__button {
 }
 
 .filter__ingredients--list {
-  display: none;
+  /* display: none; */
 }
 /************************************/
 /* FOOTER */

@@ -77,7 +77,7 @@ export const filteredIngredients = (data, inputValue) => {
   return ingredients;
 };
 
-//afficher la liste des ingrédients dans le DOM: affichage initial sans filtre
+console.log(filteredIngredients(recipes));
 const displayRetrievedIngredients = () => {
   // const recipes = await getRecipesData();
   // const recipes = getStorageItem("recipes");
@@ -86,11 +86,10 @@ const displayRetrievedIngredients = () => {
     recipes
   );
   console.log(filteredIngredients(recipes));
-  console.log(
-    ingredientsList(
-      getElement(".filter__ingredients--list"),
-      filteredIngredients(recipes)
-    )
+
+  ingredientsList(
+    getElement(".filter__ingredients--list"),
+    filteredIngredients(recipes)
   );
   // const ingredients = filteredIngredients(recipes);
   //display filtered data in the receipes container
@@ -100,7 +99,7 @@ const displayRetrievedIngredients = () => {
 // console.log(displayRetrievedIngredients());
 displayRetrievedIngredients();
 
-//afficher la liste des ingrédients dans le DOM: affichage initial avec ou sans filtre
+//display the list of ingredients
 const displayIngredientsList = () => {
   //get the form and the input
   const form = getElement(".search__input-ingredients");
@@ -124,18 +123,7 @@ const displayIngredientsList = () => {
 
 displayIngredientsList();
 
-//Récupérer et afficher la listes des appareils sans filtre
-const displayRetrievedAppliances = () => {
-  console.log(
-    appliancesList(
-      getElement(".filter__appliances--list"),
-      applianceListToFilter(recipes)
-    )
-  );
-};
-displayRetrievedAppliances();
-
-//Afficher la listes des appareils avec ou sans filtre
+//display appliance list
 const displayAppliancesList = () => {
   //get the form and the input
   const form = getElement(".search__input-appliances");

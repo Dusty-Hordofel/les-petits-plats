@@ -32,20 +32,20 @@ const addApplianceTag = (applianceId) => {
     tagApplianceContainer.remove();
 
     // filteredRecipesWithTags(getStorageItem("recipes"));
-    // recipesCards(
-    //   getElement("#recipes"),
-    //   filteredRecipesWithTags(getStorageItem("recipes"))
-    // );
+    recipesCards(
+      getElement("#recipes"),
+      filteredRecipesWithTags(getStorageItem("recipes"))
+    );
     return false;
   });
 
-  ingredientTag.appendChild(tagApplianceContainer);
+  applianceTag.appendChild(tagApplianceContainer);
   tagApplianceContainer.appendChild(tagAppliance);
   tagApplianceContainer.appendChild(deleteTagIcon);
   deleteTagIcon.appendChild(deleteIconImg);
-  //   recipesCards(
-  //     getElement("#recipes"),
-  //     filteredRecipesWithTags(getStorageItem("recipes"))
-  //   );
+  recipesCards(
+    getElement("#recipes"),
+    filteredRecipesWithTags(getStorageItem("recipes"))
+  );
   // filteredRecipesWithTags(getStorageItem("recipes"));
 };
