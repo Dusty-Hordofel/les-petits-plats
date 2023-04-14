@@ -1,40 +1,65 @@
-export function ingredientsList(element, recipes) {
+const ingredientsList = (element, recipes) => {
   // element.innerHTML = 33;
   element.innerHTML = `
   <div class="recipe__list__container">
     <ul class="recipe__list__container--items">
     ${recipes
-      .map(
-        (recipe, index) =>
-          `<li recipe__list__container--items key=${index}}> ${
-            recipe.charAt(0).toUpperCase() + recipe.slice(1)
-          }</li>`
-      )
+      .map((recipe, index) => {
+        let recipeId = recipe.charAt(0).toUpperCase() + recipe.slice(1);
+        console.log(
+          "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
+          typeof recipeId
+        );
+        return `<li class="recipe__container--item" key=${index} id="${recipeId}" onclick="addTag('${recipeId}')"> ${
+          recipe.charAt(0).toUpperCase() + recipe.slice(1)
+        }</li>`;
+      })
       .join("")}
     </ul>
     </div>
  `;
-}
+};
 
-// return `
-// <li class="recipe__card__description__ingredients--item">
-// <p class="recipe__card__description--ingredients__item--name">
-// ${ingredient ? ingredient : ""}
-// </li>`;
-// element.innerHTML = `
-// <div class="recipe__card__description__ingredients--container">
-//     <ul class="recipe__card__description__ingredients">
-//     ${ingredients
-//       .map((ingrediento) => {
-//         const { ingredient } = ingrediento;
-//         return `
-//         <li class="recipe__card__description__ingredients--item">
-//         <p class="recipe__card__description--ingredients__item--name">
-//         ${ingredient ? ingredient : ""}
-//         </li>`;
-//       })
-//       .join("")}
-//     </ul>
-//     </div>
+const appliancesList = (element, recipes) => {
+  // element.innerHTML = 33;
+  element.innerHTML = `
+  <div class="appliance__list__container">
+    <ul class="appliance__list__container--items">
+    ${recipes
+      .map((recipe, index) => {
+        let applianceId = recipe.charAt(0).toUpperCase() + recipe.slice(1);
+        console.log(
+          "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
+          typeof applianceId
+        );
+        return `<li class="appliance__container--item" key=${index} id="${applianceId}" onclick="addApplianceTag('${applianceId}')"> ${
+          recipe.charAt(0).toUpperCase() + recipe.slice(1)
+        }</li>`;
+      })
+      .join("")}
+    </ul>
+    </div>
+ `;
+};
+const ustensilsList = (element, recipes) => {
+  // element.innerHTML = 33;
+  element.innerHTML = `
+  <div class="ustensil__list__container">
+    <ul class="ustensil__list__container--items">
+    ${recipes
+      .map((recipe, index) => {
+        let ustensilId = recipe.charAt(0).toUpperCase() + recipe.slice(1);
+        console.log(
+          "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
+          typeof ustensilId
+        );
+        return `<li class="ustensil__container--item" key=${index} id="${ustensilId}" onclick="addUstensilTag('${ustensilId}')"> ${recipe}</li>`;
+      })
+      .join("")}
+    </ul>
+    </div>
+ `;
+};
 
-//  `;
+//remplacé "recipe.charAt(0).toUpperCase() + recipe.slice(1)" par "recipe" au niveau du <li></li> pour avoir les noms des ingrédients en minuscule
+export { ingredientsList, appliancesList, ustensilsList };
