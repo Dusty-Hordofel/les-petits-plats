@@ -791,3 +791,46 @@ export const displayUstensils = (element) => {
 `;
 };
 ```
+
+### 13. arrowUstensilUp && arrowUstensilDown
+
+- [arrowUstensilDown](/)
+
+```js
+const arrowUstensilDown = () => {
+  console.log("tu cliques sur la flèche");
+
+  //hide the ustensil button
+  getElement(".filter__ustensils__title").style.display = "none";
+  //display ustensils input
+  getElement("#ustensils-input").style.display = "block";
+  //add focus on ustensils  input
+  getElement("#ustensils-input").focus();
+  //display the arrow up
+  getElement("#filter__ustensils__title--icon--up").style.display = "block";
+  //expand the ustensils container
+  getElement(".filter__ustensils--container").style.width = "667px";
+  getElement(".filter__ustensils--container").style.height = "auto";
+  //display the list of ustensils
+};
+```
+
+- [arrowUstensilUp](/)
+
+```js
+const arrowUstensilUp = () => {
+  console.log("tu cliques sur la flèche");
+
+  //show the ustensil's button
+  getElement(".filter__ustensils__title").style.display = "flex";
+  //hide ustensil's input search
+  getElement("#ustensils-input").style.display = "none";
+  //hide the arrow up
+  getElement("#filter__ustensils__title--icon--up").style.display = "none";
+  //reduce the ustensils container
+  getElement(".filter__ustensils--container").style.width = "17rem";
+  getElement(".filter__ustensils--container").style.height = "6.9rem";
+  // show the list of ustensils
+  //display the list of ustensils
+};
+```

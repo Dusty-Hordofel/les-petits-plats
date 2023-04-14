@@ -1,6 +1,7 @@
 import {
   displayIngredients,
   displayAppliances,
+  displayUstensils,
 } from "./components/create_filters.js";
 // import { recipesCards } from "./components/recipe_card.js";
 import { getRecipesData } from "./api/api.js";
@@ -23,6 +24,7 @@ const recipes = getStorageItem("recipes");
 
 displayIngredients(document.querySelector(".filter__ingredients"));
 displayAppliances(document.querySelector(".filter__appliances"));
+displayUstensils(document.querySelector(".filter__ustensils"));
 
 //display the list of recipes
 const displayRecipes = () => {

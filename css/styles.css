@@ -193,7 +193,8 @@ main .search__button {
   height: 53px;
 }
 .filter__ingredients--container,
-.filter__appliances--container {
+.filter__appliances--container,
+.filter__ustensils--container {
   /* position: absolute; */
   /* background: #ed6454; */
   width: 17rem;
@@ -214,6 +215,9 @@ main .search__button {
 .filter__appliances--container {
   background: var(--les-petits-plats-green);
 }
+.filter__ustensils--container {
+  background: var(--les-petits-plats-red);
+}
 
 #ingredients-input {
   /* background: #ed6454; */
@@ -222,7 +226,8 @@ main .search__button {
 }
 
 .recipe__list__container--items,
-.appliance__list__container--items {
+.appliance__list__container--items,
+.ustensils__list__container--items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   overflow-y: scroll;
@@ -235,14 +240,16 @@ main .search__button {
 }
 
 .filter__ingredients__title,
-.filter__appliances__title {
+.filter__appliances__title,
+.filter__ustensils__title {
   font-size: var(--les-petits-plats-fs-2);
   color: var(--les-petits-plats-white);
   font-weight: var(--les-petits-plats-fw-700);
   width: 100%;
 }
 .filter__ingredients__title h2,
-.filter__appliances__title h2 {
+.filter__appliances__title h2,
+.filter__ustensils__title h2 {
   font-size: var(--les-petits-plats-fs-2);
   animation: title 0.5s ease-in-out;
 }
@@ -259,7 +266,9 @@ main .search__button {
 #filter__ingredients__title--icon--down,
 #filter__ingredients__title--icon--up,
 #filter__appliances__title--icon--down,
-#filter__appliances__title--icon--up {
+#filter__appliances__title--icon--up,
+#filter__ustensils__title--icon--down,
+#filter__ustensils__title--icon--up {
   display: block;
   cursor: pointer;
   color: var(--les-petits-plats-white);
@@ -270,7 +279,8 @@ main .search__button {
   margin-bottom: 20px;
 } */
 .filter__ingredients--input,
-.filter__appliances--input {
+.filter__appliances--input,
+.filter__ustensils--input {
   display: none;
   color: var(--les-petits-plats-white);
   /* padding-bottom: 20px; */
@@ -281,14 +291,19 @@ main .search__button {
 .filter__appliances--input {
   background: var(--les-petits-plats-green);
 }
+.filter__ustensils--input {
+  background: var(--les-petits-plats-red);
+}
 
 .filter__ingredients--input::placeholder,
-.filter__appliances--input::placeholder {
+.filter__appliances--input::placeholder,
+.filter__ustensils--input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 
 #filter__ingredients__title--icon--up,
-#filter__appliances__title--icon--up {
+#filter__appliances__title--icon--up,
+#filter__ustensils__title--icon--up {
   display: none;
 }
 
@@ -297,7 +312,8 @@ main .search__button {
   /* background: #68d9a4; */
 }
 .ingredient__tag,
-.appliance__tag {
+.appliance__tag,
+.ustensil__tag {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -324,6 +340,9 @@ main .search__button {
 }
 .appliance__tag {
   background: var(--les-petits-plats-green);
+}
+.ustensil__tag {
+  background: var(--les-petits-plats-red);
 }
 /************************************/
 /* CARD */
