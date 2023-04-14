@@ -8,46 +8,39 @@
   //add an event listener to the form
   form.addEventListener("keyup", function () {
     const value = nameInput.value;
-    console.log("🚀 ~ file: search.js:9 ~ value:", value);
+    // console.log("🚀 ~ file: search.js:9 ~ value:", value);
 
     if (value) {
       //filter the data based on the value of the input
       const newData = data.filter((receipe) => {
         let { name, appliance, ingredients, description, ustensils } = receipe;
-        console.log(
-          "🚀 ~ file: search.js:17 ~ newData ~ ustensils:",
-          ustensils
-        );
-        // console.log(
-        //   "🚀 ~ file: search.js:17 ~ newData ~ ingredients:",
-        //   ingredients
-        // );
-        // console.log(
-        //   "🚀 ~ file: search.js:17 ~ newData ~ ustensils:",
-        //   ustensils
-        // );
+        console.log(ingredients.map((ingredient) => ingredient.ingredient));
 
-        name = name.toLowerCase();
-        appliance = appliance.toLowerCase();
-        description = description.toLowerCase();
+        //verifier si le nom de la recette est inclus dans l'input
+        name = name.toLowerCase().startsWith(value);
+        //verifier si le nom du materiel est inclu dans l'input
+        appliance = appliance.toLowerCase().startsWith(value);
+        //verifier si le nom saisie est inclu dans la description
+        description = description.toLowerCase().startsWith(value);
 
-        // ustensils = ustensils.map((ustensil) => ustensil.toLowerCase());
+        //verifier si la valeur saisie correspond à l'ustensile
         ustensils = ustensils.includes(value) ? value : "";
-        console.log(
-          "🚀 ~ file: search.js:28 ~ newData ~ ustensils:",
-          ustensils
-        );
-        //ustensils.includes(value)
-        if (
-          name.startsWith(value) ||
-          appliance.startsWith(value) ||
-          description.startsWith(value) ||
-          ustensils
-        ) {
+
+        //mettre les ingrédients dans un tableau et vérifier si la valeur de l'input est incluse dans chacun des tableaux
+        ingredients = ingredients
+          .map((ingredient) => {
+            return ingredient.ingredient;
+          })
+          .includes(value)
+          ? value
+          : "";
+
+        //renvoi la recette s'il y a une correspondance
+        if (name || appliance || description || ustensils || ingredients) {
           return receipe;
         }
       });
-      console.log("🚀 ~ file: search.js:21 ~ newData ~ newData:", newData);
+      // console.log("🚀 ~ file: search.js:21 ~ newData ~ newData:", newData);
       //display filtered data in the receipes container
       recipesCards(getElement("#recipes"), newData);
 
