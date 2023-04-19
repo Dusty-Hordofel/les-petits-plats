@@ -5,11 +5,15 @@ const ingredientsList = (element, recipes) => {
     <ul class="recipe__list__container--items">
     ${recipes
       .map((recipe, index) => {
+        // console.log(
+        //   "🚀 ~ file: ingredients_list.js:8 ~ .map ~ recipe:",
+        //   recipe
+        // );
         let recipeId = recipe.charAt(0).toUpperCase() + recipe.slice(1);
-        console.log(
-          "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
-          typeof recipeId
-        );
+        // console.log(
+        //   "🚀 ~ file: ingredients_list.js:10 ~ .map ~ recipeId:",
+        //   recipeId
+        // );
         return `<li class="recipe__container--item" key=${index} id="${recipeId}" onclick="addTag('${recipeId}')"> ${
           recipe.charAt(0).toUpperCase() + recipe.slice(1)
         }</li>`;
@@ -28,10 +32,11 @@ const appliancesList = (element, recipes) => {
     ${recipes
       .map((recipe, index) => {
         let applianceId = recipe.charAt(0).toUpperCase() + recipe.slice(1);
-        console.log(
-          "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
-          typeof applianceId
-        );
+        // console.log(
+        //   "🚀 ~ file: ingredients_list.js:31 ~ .map ~ applianceId:",
+        //   applianceId
+        // );
+
         return `<li class="appliance__container--item" key=${index} id="${applianceId}" onclick="addApplianceTag('${applianceId}')"> ${
           recipe.charAt(0).toUpperCase() + recipe.slice(1)
         }</li>`;
@@ -49,10 +54,10 @@ const ustensilsList = (element, recipes) => {
     ${recipes
       .map((recipe, index) => {
         let ustensilId = recipe.charAt(0).toUpperCase() + recipe.slice(1);
-        console.log(
-          "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
-          typeof ustensilId
-        );
+        // console.log(
+        //   "🚀 ~ file: ingredients_list.js:9 ~ .map ~ recipeId:",
+        //   ustensilId
+        // );
         return `<li class="ustensil__container--item" key=${index} id="${ustensilId}" onclick="addUstensilTag('${ustensilId}')"> ${recipe}</li>`;
       })
       .join("")}

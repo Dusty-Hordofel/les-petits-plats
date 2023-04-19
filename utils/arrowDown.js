@@ -1,6 +1,6 @@
 // import { getElement } from "./utils.js";
 
-const arrowDown = () => {
+const arrowDown = (e) => {
   console.log("tu cliques sur la flèche");
 
   //hide the ingredient button
@@ -14,16 +14,16 @@ const arrowDown = () => {
   //expand the ingredients container
   getElement(".filter__ingredients--container").style.width = "667px";
   getElement(".filter__ingredients--container").style.height = "auto";
-  //display the list of ingredients
-  // getElement(".filter__ingredients--list").style.display = "flex";
-  // show search input
-  // show the list of ingredients
-  //display the list of ingredients
+  //remove expanded class to another input
+  getElement(".filter__appliances--container").style.width = "17rem";
+  getElement(".filter__ustensils--container").style.width = "17rem";
+  //reduce the appliances input container
+  arrowApplianceUp();
+  //reduce the ustensils input container
+  arrowUstensilUp();
 };
 
-const arrowUp = () => {
-  console.log("tu cliques sur la flèche");
-
+const arrowUp = (event) => {
   //show the ingredient's button
   getElement(".filter__ingredients__title").style.display = "flex";
   //hide ingredient's input search
@@ -33,11 +33,6 @@ const arrowUp = () => {
   //reduce the ingredients container
   getElement(".filter__ingredients--container").style.width = "17rem";
   getElement(".filter__ingredients--container").style.height = "6.9rem";
-  //display the list of ingredients
-  // getElement(".filter__ingredients--list").style.display = "none";
-  // show search input
-  // show the list of ingredients
-  //display the list of ingredients
 };
 
 const arrowApplianceDown = () => {
@@ -54,7 +49,10 @@ const arrowApplianceDown = () => {
   //expand the appliances container
   getElement(".filter__appliances--container").style.width = "667px";
   getElement(".filter__appliances--container").style.height = "auto";
-  //display the list of appliances
+  //reduce the appliances input container
+  arrowUp();
+  //reduce the ustensils input container
+  arrowUstensilUp();
 };
 
 const arrowApplianceUp = () => {
@@ -88,6 +86,12 @@ const arrowUstensilDown = () => {
   getElement(".filter__ustensils--container").style.width = "667px";
   getElement(".filter__ustensils--container").style.height = "auto";
   //display the list of ustensils
+  getElement(".filter__ingredients--container").style.width = "17rem";
+  getElement(".filter__appliances--container").style.width = "17rem";
+  //reduce the appliances input container
+  arrowUp();
+  //reduce the ingredients input container
+  arrowApplianceUp();
 };
 
 const arrowUstensilUp = () => {
@@ -145,10 +149,12 @@ const addTag = (recipeId) => {
     tagIngredientContainer.remove();
     // liveSearch();
     // filteredRecipesWithTags(getStorageItem("recipes"));
-    recipesCards(
-      getElement("#recipes"),
-      filteredRecipesWithTags(getStorageItem("recipes"))
-    );
+    // searchLive();
+    // recipesCards(
+    //   getElement("#recipes"),
+    //   filteredRecipesWithTags(getStorageItem("recipes"))
+    // );
+    searchFilter(getStorageItem("recipes"));
     return false;
   });
 
@@ -157,10 +163,17 @@ const addTag = (recipeId) => {
   tagIngredientContainer.appendChild(deleteTagIcon);
   deleteTagIcon.appendChild(deleteIconImg);
   // liveSearch();
-  recipesCards(
-    getElement("#recipes"),
-    filteredRecipesWithTags(getStorageItem("recipes"))
-  );
+  // searchLive();
+  searchFilter(getStorageItem("recipes"));
+  // searchFilter(getStorageItem("recipes"));
+
+  // recipesCards(
+  //   getElement("#recipes"),
+  //   filteredRecipesWithTags(getStorageItem("recipes"))
+  // );
+  // filterSearch(recipes);
+  // const recipes = getStorageItem("recipes");
+  // filterSearch(recipes);
   // filteredRecipesWithTags(getStorageItem("recipes"));
 };
 
@@ -170,19 +183,12 @@ const filteredRecipesWithTags = (recipesToFilter) => {
   const taggedIngredientsDOM = Array.from(
     document.querySelectorAll(".ingredients__tag .ingredient__tag .blue__tag")
   );
-  console.log(
-    "🚀 ~ file: arrowDown.js:148 ~ filteredRecipesWithTags ~ taggedIngredientsDOM:",
-    taggedIngredientsDOM
-  );
+
   const taggedAppliancesDOM = Array.from(
     document.querySelectorAll(".appliances__tag .appliance__tag .green__tag")
   );
   const taggedustensilsDOM = Array.from(
     document.querySelectorAll(".ustensils__tag .ustensil__tag .red__tag")
-  );
-  console.log(
-    "🚀 ~ file: arrowDown.js:183 ~ filteredRecipesWithTags ~ taggedustensilsDOM:",
-    taggedustensilsDOM
   );
 
   let recipesToDisplay = []; // array of recipes to display
@@ -190,9 +196,13 @@ const filteredRecipesWithTags = (recipesToFilter) => {
   let taggedAppliances = [];
   let taggedUstensils = [];
 
-  // create an array of text of tagged ingredients using the array of DOM elements
+  //créer un tableau de texte des ingrédients taggés en utilisant le tableau d'éléments du DOM
   taggedIngredients = taggedIngredientsDOM.map(
     (taggedIngredient) => taggedIngredient.innerText
+  );
+  console.log(
+    "🚀 ~ file: arrowDown.js:194 ~ filteredRecipesWithTags ~ taggedIngredients:",
+    taggedIngredients
   );
   //création de la liste des tags des appareils grace  aux éléments du DOM (taggedAppliancesDOM)
   taggedAppliances = taggedAppliancesDOM.map(
@@ -202,6 +212,10 @@ const filteredRecipesWithTags = (recipesToFilter) => {
   //création de la liste des tags des ustensiles grace  aux éléments du DOM (taggedustensilsDOM)
   taggedUstensils = taggedustensilsDOM.map(
     (taggedUstensil) => taggedUstensil.innerText
+  );
+  console.log(
+    "🚀 ~ file: arrowDown.js:203 ~ filteredRecipesWithTags ~ taggedUstensils:",
+    taggedUstensils
   );
 
   //liste des recettes filtrés grace aux tags des ingredients, des appareils et des ustensiles
@@ -223,12 +237,17 @@ const filteredRecipesWithTags = (recipesToFilter) => {
     ingredientsInTheRecipe = recipe.ingredients.map(({ ingredient }) => {
       return ingredient;
     });
+    // console.log(
+    //   "🚀 ~ file: arrowDown.js:223 ~ ingredientsInTheRecipe=recipe.ingredients.map ~ ingredientsInTheRecipe:",
+    //   ingredientsInTheRecipe
+    // );
     //Obtenir la liste de tous les appareils contenu dans les recettes grace à  list des recettes en paramètre
     appliancesInTheRecipe.push(recipe.appliance);
 
     //Obtenir la liste de tous les ustensiles contenu dans les recettes grace à  list des recettes en paramètre
     ustensilsInTheRecipe = recipe.ustensils.map((ustensil) => ustensil);
 
+    //vérifier si l'ingrédient de la recette est contenu dans le tableau des tags des ingrédients
     // check if ingredientsInTheRecipe contains tagged ingredients and count them
     if (taggedIngredients.length > 0) {
       taggedIngredients.forEach((taggedIngredient) => {
@@ -284,7 +303,7 @@ const filteredRecipesWithTags = (recipesToFilter) => {
     }
     return recipeIsMatching;
   });
-  // filterAll(recipesToDisplay);
+  filterAll(recipesToDisplay);
   console.log(
     "🚀 ~ file: arrowDown.js:284 ~ filteredRecipesWithTags ~ recipesToDisplay:",
     recipesToDisplay
@@ -306,10 +325,10 @@ const filterAll = (recipes) => {
   const ustensilsListDOM = document.querySelector(
     ".ustensil__list__container--items"
   );
-  console.log(
-    "🚀 ~ file: arrowDown.js:329 ~ filterAll ~ ustensilsListDOM:",
-    ustensilsListDOM
-  );
+  // console.log(
+  //   "🚀 ~ file: arrowDown.js:329 ~ filterAll ~ ustensilsListDOM:",
+  //   ustensilsListDOM
+  // );
 
   const ingredientsList = [];
   const appliancesList = [];
@@ -326,9 +345,17 @@ const filterAll = (recipes) => {
     const ingredientsTag = [
       ...document.querySelectorAll(".ingredient__tag"),
     ].map((itag) => itag.innerText);
+    console.log(
+      "🚀 ~ file: arrowDown.js:335 ~ recipes.map ~ ingredientsTag:",
+      ingredientsTag
+    );
 
     //map sur les ingredients de la recette
     recipe.ingredients.map(({ ingredient }, index) => {
+      console.log(
+        "🚀 ~ file: arrowDown.js:334 ~ recipe.ingredients.map ~ ingredient:",
+        recipe.ingredients
+      );
       //si l'ingrédient n'est pas dans le tableau des tags et n'est pas dans le tableau des ingredients
       if (
         !ingredientsTag.includes(ingredient) &&
@@ -336,6 +363,11 @@ const filterAll = (recipes) => {
       ) {
         //ajout de l'ingrédient dans le tableau des ingredients
         ingredientsList.push(ingredient);
+        console.log(
+          "🚀 ~ file: arrowDown.js:345 ~ recipe.ingredients.map ~ ingredientsList:",
+          ingredientsList
+        );
+
         //ajout de l'ingrédient dans la liste des ingredients
         const ingredientItem = document.createElement("li");
         ingredientItem.className = "recipe__container--item";
@@ -355,17 +387,22 @@ const filterAll = (recipes) => {
       (applianceTag) => applianceTag.innerText
     );
     console.log(
-      "🚀 ~ file: arrowDown.js:350 ~ recipes.map ~ ingredientsTag:",
-      appliancesTag
+      "🚀 ~ file: arrowDown.js:364 ~ recipes.map ~ ingredientsTag:",
+      appliancesTag,
+      appliancesList
     );
     //si l'appareil n'est pas dans le tableau des tags et n'est pas dans le tableau des appareils, on l'ajoute
     if (
       !appliancesList.includes(recipe.appliance) &&
       !appliancesTag.includes(recipe.appliance)
     ) {
+      //ajout de l'appareil dans le tableau des appareils
       appliancesList.push(recipe.appliance);
+      //ajout de l'appareil dans la liste des appareils
       const applianceItem = document.createElement("li");
       applianceItem.classList.add("appliance__container--item");
+      // applianceItem.setAttribute("key", index);
+      applianceItem.setAttribute("id", recipe.appliance);
       applianceItem.innerText = recipe.appliance;
       appliancesListDOM.appendChild(applianceItem);
       console.log(applianceItem);
@@ -376,8 +413,12 @@ const filterAll = (recipes) => {
 
     //gestion des ustensiles
     //Si l'ustensile existe déjà , on ne l'ajoute pas
-    const ustensilsTag = [...document.querySelectorAll(".tag__ustensil")].map(
+    const ustensilsTag = [...document.querySelectorAll(".ustensil__tag")].map(
       (utag) => utag.innerText
+    );
+    console.log(
+      "🚀 ~ file: arrowDown.js:400 ~ recipes.map ~ ustensilsTag:",
+      ustensilsTag
     );
 
     //si l'ustensile n'est pas dans le tableau des tags et n'est pas dans le tableau des ustensiles, on l'ajoute
@@ -390,11 +431,12 @@ const filterAll = (recipes) => {
         const ustensilItem = document.createElement("li");
         ustensilItem.classList.add("filter__ustensils--items");
         ustensilItem.innerText = ustensil;
+        ustensilItem.setAttribute("id", ustensil);
         // ustensilsBloc.appendChild(filterItem);
         ustensilsListDOM.appendChild(ustensilItem);
         console.log(ustensilItem);
         ustensilItem.addEventListener("click", () => {
-          addApplianceTag(ustensilItem.textContent);
+          addUstensilTag(ustensilItem.textContent);
         });
       }
     });

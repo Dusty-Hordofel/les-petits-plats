@@ -76,3 +76,5 @@ const ustensilsListToFilter = (data, inputValue) => {
 //   "🚀 ~ file: algoFn.js:76 ~ ustensilsListToFilter ~ ustensilsListToFilter:",
 //   ustensilsListToFilter(getStorageItem("recipes"))
 // );
+
+//c'est une liste de recette ! tu es un ingénieur javascript. récupère tous les ingrédients et tu les mets dans une seul liste avec du javascript

@@ -32,6 +32,7 @@ const displayRecipes = () => {
   // const recipes = await getRecipesData();
   // const recipes = getStorageItem("recipes");
   // console.log("🚀 ~ file: index.js:12 ~ displayRecipes ~ recipes:", recipes);
+
   recipesCards(getElement("#recipes"), recipes);
 };
 displayRecipes();
@@ -40,10 +41,10 @@ displayRecipes();
 const displayFilteredRecipes = () => {
   // const recipes = await getRecipesData();
   // const recipes = getStorageItem("recipes");
-  filterSearch(recipes);
+  // filterSearch(recipes);
 };
 
-displayFilteredRecipes();
+// displayFilteredRecipes();
 
 // console.log(displayFilteredRecipes());
 
@@ -82,15 +83,7 @@ export const filteredIngredients = (data, inputValue) => {
 
 //afficher la liste des ingrédients dans le DOM: affichage initial sans filtre
 const displayRetrievedIngredients = () => {
-  // const recipes = await getRecipesData();
-  // const recipes = getStorageItem("recipes");
-  // console.log(
-  //   "🚀 ~ file: index.js:83 ~ displayRetrievedIngredients ~ recipes:",
-  //   recipes
-  // );
-  // console.log(filteredIngredients(recipes));
-  // console.log(
-  ingredientsList(
+  /*set*/ ingredientsList(
     getElement(".filter__ingredients--list"),
     filteredIngredients(recipes)
   );
