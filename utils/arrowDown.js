@@ -1,8 +1,7 @@
 // import { getElement } from "./utils.js";
+const mediaQuery = window.matchMedia("(max-width: 768px)");
 
 const arrowDown = (e) => {
-  console.log("tu cliques sur la flèche");
-
   //hide the ingredient button
   getElement(".filter__ingredients__title").style.display = "none";
   //display ingredients input
@@ -12,18 +11,26 @@ const arrowDown = (e) => {
   //display the arrow up
   getElement("#filter__ingredients__title--icon--up").style.display = "block";
   //expand the ingredients container
-  getElement(".filter__ingredients--container").style.width = "667px";
-  getElement(".filter__ingredients--container").style.height = "auto";
+  if (mediaQuery.matches) {
+    getElement(".filter__ingredients--container").style.width = "300px";
+    getElement(".filter__ingredients--container").style.height = "auto";
+    // getElement(".filter__ustensils").style.display = "none";
+    // getElement(".filter__appliances").style.display = "none";
+  } else {
+    getElement(".filter__ingredients--container").style.width = "667px";
+    getElement(".filter__ingredients--container").style.height = "auto";
+  }
+
   //remove expanded class to another input
-  getElement(".filter__appliances--container").style.width = "17rem";
-  getElement(".filter__ustensils--container").style.width = "17rem";
+  // getElement(".filter__appliances--container").style.width = "17rem";
+  // getElement(".filter__ustensils--container").style.width = "17rem";
   //reduce the appliances input container
   arrowApplianceUp();
   //reduce the ustensils input container
   arrowUstensilUp();
 };
 
-const arrowUp = (event) => {
+const arrowUp = () => {
   //show the ingredient's button
   getElement(".filter__ingredients__title").style.display = "flex";
   //hide ingredient's input search
@@ -31,8 +38,13 @@ const arrowUp = (event) => {
   //hide the arrow up
   getElement("#filter__ingredients__title--icon--up").style.display = "none";
   //reduce the ingredients container
+
   getElement(".filter__ingredients--container").style.width = "17rem";
   getElement(".filter__ingredients--container").style.height = "6.9rem";
+  if (mediaQuery.matches) {
+    getElement(".filter__appliances").style.display = "";
+    getElement(".filter__ustensils").style.display = "";
+  }
 };
 
 const arrowApplianceDown = () => {
@@ -47,8 +59,16 @@ const arrowApplianceDown = () => {
   //display the arrow up
   getElement("#filter__appliances__title--icon--up").style.display = "block";
   //expand the appliances container
-  getElement(".filter__appliances--container").style.width = "667px";
-  getElement(".filter__appliances--container").style.height = "auto";
+  if (mediaQuery.matches) {
+    getElement(".filter__appliances--container").style.width = "300px";
+    getElement(".filter__appliances--container").style.height = "auto";
+    // getElement(".filter__ustensils").style.display = "none";
+    // getElement(".filter__ingredients").style.display = "none";
+  } else {
+    getElement(".filter__appliances--container").style.width = "667px";
+    getElement(".filter__appliances--container").style.height = "auto";
+  }
+
   //reduce the appliances input container
   arrowUp();
   //reduce the ustensils input container
@@ -67,8 +87,11 @@ const arrowApplianceUp = () => {
   //reduce the appliances container
   getElement(".filter__appliances--container").style.width = "17rem";
   getElement(".filter__appliances--container").style.height = "6.9rem";
-  // show the list of appliances
-  //display the list of appliances
+  //show
+  // if (mediaQuery.matches) {
+  //   getElement(".filter__ingredients").style.display = "";
+  //   getElement(".filter__ustensils").style.display = "";
+  // }
 };
 
 const arrowUstensilDown = () => {
@@ -83,11 +106,19 @@ const arrowUstensilDown = () => {
   //display the arrow up
   getElement("#filter__ustensils__title--icon--up").style.display = "block";
   //expand the ustensils container
-  getElement(".filter__ustensils--container").style.width = "667px";
-  getElement(".filter__ustensils--container").style.height = "auto";
+  if (mediaQuery.matches) {
+    getElement(".filter__ustensils--container").style.width = "300px";
+    getElement(".filter__ustensils--container").style.height = "auto";
+    // getElement(".filter__ingredients").style.display = "none";
+    // getElement(".filter__appliances").style.display = "none";
+  } else {
+    getElement(".filter__ustensils--container").style.width = "667px";
+    getElement(".filter__ustensils--container").style.height = "auto";
+  }
+
   //display the list of ustensils
-  getElement(".filter__ingredients--container").style.width = "17rem";
-  getElement(".filter__appliances--container").style.width = "17rem";
+  // getElement(".filter__ingredients--container").style.width = "17rem";
+  // getElement(".filter__appliances--container").style.width = "17rem";
   //reduce the appliances input container
   arrowUp();
   //reduce the ingredients input container
@@ -106,8 +137,11 @@ const arrowUstensilUp = () => {
   //reduce the ustensils container
   getElement(".filter__ustensils--container").style.width = "17rem";
   getElement(".filter__ustensils--container").style.height = "6.9rem";
-  // show the list of ustensils
-  //display the list of ustensils
+  // show
+  // if (mediaQuery.matches) {
+  //   getElement(".filter__ingredients").style.display = "";
+  //   getElement(".filter__appliances").style.display = "";
+  // }
 };
 
 //tags already selected
@@ -162,19 +196,7 @@ const addTag = (recipeId) => {
   tagIngredientContainer.appendChild(tagIngredient);
   tagIngredientContainer.appendChild(deleteTagIcon);
   deleteTagIcon.appendChild(deleteIconImg);
-  // liveSearch();
-  // searchLive();
   searchFilter(getStorageItem("recipes"));
-  // searchFilter(getStorageItem("recipes"));
-
-  // recipesCards(
-  //   getElement("#recipes"),
-  //   filteredRecipesWithTags(getStorageItem("recipes"))
-  // );
-  // filterSearch(recipes);
-  // const recipes = getStorageItem("recipes");
-  // filterSearch(recipes);
-  // filteredRecipesWithTags(getStorageItem("recipes"));
 };
 
 //FAIT: Obtenir la liste des recettes filtrées par les tags
@@ -237,10 +259,7 @@ const filteredRecipesWithTags = (recipesToFilter) => {
     ingredientsInTheRecipe = recipe.ingredients.map(({ ingredient }) => {
       return ingredient;
     });
-    // console.log(
-    //   "🚀 ~ file: arrowDown.js:223 ~ ingredientsInTheRecipe=recipe.ingredients.map ~ ingredientsInTheRecipe:",
-    //   ingredientsInTheRecipe
-    // );
+
     //Obtenir la liste de tous les appareils contenu dans les recettes grace à  list des recettes en paramètre
     appliancesInTheRecipe.push(recipe.appliance);
 
