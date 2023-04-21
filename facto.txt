@@ -1,0 +1,11 @@
+const displayRetrievedIngredients = () => {
+  // /*set*/ ingredientsList(
+  //   getElement(".filter__ingredients--list"),
+  //   filteredIngredients(recipes)
+  // );
+  setFilterList(
+    getElement(".filter__ingredients--list"),
+    "recipe",
+    filteredIngredients(recipes)
+  );
+};

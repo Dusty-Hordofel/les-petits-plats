@@ -20,15 +20,7 @@ const searchFilter = (recipes) => {
 
   // Retourne un tableau 'recipeToDisplay' qui suit les règles de ma regex.
   if (searchInput.value.length > 2) {
-    const inputValue = searchInput.value;
-    console.log(
-      "🚀 ~ file: search.js:13 ~ searchLive ~ inputValue:",
-      inputValue
-    );
-    // mainInput = searchBarInput.value;
-
-    const regex = new RegExp(`${inputValue.trim().toLowerCase()}`);
-    // console.log("🚀 ~ file: search.js:32 ~ searchFilter ~ regex:", regex);
+    inputValue = searchInput.value;
 
     // console.log(recipes);
     recipesToDisplay = recipes.filter((recipe) => {
@@ -38,10 +30,7 @@ const searchFilter = (recipes) => {
       let isNameIncludedInReceipe = name
         .toLowerCase()
         .includes(inputValue.toLowerCase());
-      console.log(
-        "🚀 ~ file: search.js:21 ~ newData ~ name:",
-        isNameIncludedInReceipe
-      );
+
       //verifier si le nom du materiel est inclu dans l'input
       appliance = appliance.toLowerCase().includes(inputValue.toLowerCase());
       //verifier si le nom saisie est inclu dans la description

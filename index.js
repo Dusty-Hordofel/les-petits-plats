@@ -1,17 +1,10 @@
-import {
-  displayIngredients,
-  displayAppliances,
-  displayUstensils,
-} from "./components/create_filters.js";
-// import { recipesCards } from "./components/recipe_card.js";
+import { setFilterButton } from "./components/setFilterButtons.js";
 import { getRecipesData } from "./api/api.js";
-// import { filterSearch } from "./filters/search.js";
 import {
   ingredientsList,
   appliancesList,
   ustensilsList,
 } from "./components/ingredients_list.js";
-// import { addFilteredIngredientTag } from "./filters/tags.js";
 
 //store data to the local storage
 const storeData = async () => {
@@ -19,13 +12,72 @@ const storeData = async () => {
   setStorageItem("recipes", recipes);
 };
 storeData();
+
 //retrieve stored data in the localStorage
 const recipes = getStorageItem("recipes");
-// console.log(getStorageItem("recipes"));
 
-displayIngredients(document.querySelector(".filter__ingredients"));
-displayAppliances(document.querySelector(".filter__appliances"));
-displayUstensils(document.querySelector(".filter__ustensils"));
+//DONE: Afficher le button de filtrage des ingrédients
+const displayIngredientsFilterButton = () => {
+  //mettre en place le button de filtrage des ingrédients
+  setFilterButton(
+    document.querySelector(".filter__ingredients"),
+    "ingredients",
+    "Ingredients"
+  );
+  //ajouter un écouteur d'évenement sur le bouton ingrédients (flêche vers le bas)
+  getElement(".filter__ingredients__title--icon--down").addEventListener(
+    "click",
+    arrowDown
+  );
+  //ajouter un écouteur d'évenement sur le bouton ingrédients (flêche vers le haut)
+  getElement(".filter__ingredients__title--icon--up").addEventListener(
+    "click",
+    arrowUp
+  );
+};
+displayIngredientsFilterButton();
+
+//DONE: Afficher le button de filtrage des appareils
+const displayAppliancesFilterButton = () => {
+  //mettre en place le button de filtrage des appareils
+  setFilterButton(
+    document.querySelector(".filter__appliances"),
+    "appliances",
+    "Appliances"
+  );
+  //ajouter un écouteur d'évenement sur le bouton appareils (flêche vers le bas)
+  getElement(".filter__appliances__title--icon--down").addEventListener(
+    "click",
+    arrowApplianceDown
+  );
+  //ajouter un écouteur d'évenement sur le bouton appareils (flêche vers le haut)
+  getElement(".filter__appliances__title--icon--up").addEventListener(
+    "click",
+    arrowApplianceUp
+  );
+};
+displayAppliancesFilterButton();
+
+//DONE: Afficher le button de filtrage des ustensils
+const displayUstensilsFilterButton = () => {
+  //mettre en place le button de filtrage des ustensils
+  setFilterButton(
+    document.querySelector(".filter__ustensils"),
+    "ustensils",
+    "Ustensiles"
+  );
+  //ajouter un écouteur d'évenement sur le bouton ustensils (flêche vers le bas)
+  getElement(".filter__ustensils__title--icon--down").addEventListener(
+    "click",
+    arrowUstensilDown
+  );
+  //ajouter un écouteur d'évenement sur le bouton ustensils (flêche vers le haut)
+  getElement(".filter__ustensils__title--icon--up").addEventListener(
+    "click",
+    arrowUstensilUp
+  );
+};
+displayUstensilsFilterButton();
 
 //display the list of recipes
 const displayRecipes = () => {
@@ -36,17 +88,6 @@ const displayRecipes = () => {
   recipesCards(getElement("#recipes"), recipes);
 };
 displayRecipes();
-
-//display the list of filtered recipes
-const displayFilteredRecipes = () => {
-  // const recipes = await getRecipesData();
-  // const recipes = getStorageItem("recipes");
-  // filterSearch(recipes);
-};
-
-// displayFilteredRecipes();
-
-// console.log(displayFilteredRecipes());
 
 // list of ingredients
 export const filteredIngredients = (data, inputValue) => {
@@ -62,10 +103,6 @@ export const filteredIngredients = (data, inputValue) => {
         .sort()
     ),
   ];
-  // console.log(
-  //   "🚀 ~ file: index.js:60 ~ displayFilterIngredients ~ ingredients:",
-  //   ingredients
-  // );
 
   // Si on a un element dans l'input, on filtre les ingrédients
   if (inputValue) {
