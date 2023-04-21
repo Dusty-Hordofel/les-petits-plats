@@ -7,7 +7,7 @@ const searchFilter = (recipes) => {
   recipesToDisplay = [];
   let inputValue;
 
-  //get all tags
+  //selectionner tus les tags par type
   const allIngredientTags = document.querySelectorAll(
     ".ingredients__tag .ingredient__tag .blue__tag"
   );
@@ -20,31 +20,31 @@ const searchFilter = (recipes) => {
 
   // Retourne un tableau 'recipeToDisplay' qui suit les règles de ma regex.
   if (searchInput.value.length > 2) {
-    inputValue = searchInput.value;
+    inputValue = searchInput.value.toLowerCase();
 
     // console.log(recipes);
     recipesToDisplay = recipes.filter((recipe) => {
       let { name, appliance, ingredients, description, ustensils } = recipe;
 
       //verifier si le nom de la recette est inclus dans l'input
-      let isNameIncludedInReceipe = name
-        .toLowerCase()
-        .includes(inputValue.toLowerCase());
+      let isNameIncludedInReceipe = name.toLowerCase().includes(inputValue);
 
       //verifier si le nom du materiel est inclu dans l'input
-      appliance = appliance.toLowerCase().includes(inputValue.toLowerCase());
+      appliance = appliance.toLowerCase().includes(inputValue);
       //verifier si le nom saisie est inclu dans la description
-      description = description
-        .toLowerCase()
-        .startsWith(inputValue.toLowerCase());
+      description = description.toLowerCase().includes(inputValue);
 
       //verifier si la valeur saisie correspond à l'ustensile
       ustensils = ustensils.includes(inputValue) ? inputValue : "";
+      console.log(
+        "🚀 ~ file: search.js:39 ~ recipesToDisplay=recipes.filter ~ ustensils:",
+        ustensils
+      );
 
       //mettre les ingrédients dans un tableau et vérifier si la valeur de l'input est incluse dans chacun des tableaux
       ingredients = ingredients
         .map((ingredient) => {
-          return ingredient.ingredient;
+          return ingredient.ingredient.toLowerCase();
         })
         .includes(inputValue)
         ? inputValue
@@ -88,10 +88,10 @@ const searchFilter = (recipes) => {
   if (recipesToDisplay.length > 0) {
     recipesElement.innerHTML = "";
     // displayData(recipesToDisplay);
-    recipesCards(recipesElement, recipesToDisplay);
+    setRecipesCards(recipesElement, recipesToDisplay);
   } else {
     // displayData(recipesToDisplay);
-    recipesCards(recipesElement, recipesToDisplay);
+    setRecipesCards(recipesElement, recipesToDisplay);
     recipesElement.innerHTML = `<h3 class="filter-error">
     Désolé, aucune recette ne correspond à votre recherche
     </h3>`;
@@ -104,7 +104,7 @@ const searchFilter = (recipes) => {
   ) {
     filterAll(recipes);
     console.log(filterAll(recipes));
-    recipesCards(recipesElement, recipes);
+    setRecipesCards(recipesElement, recipes);
   }
 };
 
