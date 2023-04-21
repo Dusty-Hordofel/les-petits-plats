@@ -1,59 +1,113 @@
-// import { recipesCards } from "../components/recipe_card.js";
+let form = getElement(".search__input-container");
+let searchInput = getElement(".search__input");
+const recipesElement = getElement("#recipes");
 
-/*export*/ const filterSearch = (data) => {
-  //get the form and the input
-  const form = getElement(".search__input-container");
-  const nameInput = getElement(".search__input");
+const searchFilter = (recipes) => {
+  let tagsUsed = false;
+  recipesToDisplay = [];
+  let inputValue;
 
-  //add an event listener to the form
-  form.addEventListener("keyup", function () {
-    const value = nameInput.value;
-    // console.log("🚀 ~ file: search.js:9 ~ value:", value);
+  //get all tags
+  const allIngredientTags = document.querySelectorAll(
+    ".ingredients__tag .ingredient__tag .blue__tag"
+  );
+  const allApplianceTags = document.querySelectorAll(
+    ".appliances__tag .appliance__tag .green__tag"
+  );
+  const allUstensilTags = document.querySelectorAll(
+    ".ustensils__tag .ustensil__tag .red__tag"
+  );
 
-    if (value) {
-      //filter the data based on the value of the input
-      const newData = data.filter((receipe) => {
-        let { name, appliance, ingredients, description, ustensils } = receipe;
-        console.log(ingredients.map((ingredient) => ingredient.ingredient));
+  // Retourne un tableau 'recipeToDisplay' qui suit les règles de ma regex.
+  if (searchInput.value.length > 2) {
+    inputValue = searchInput.value;
 
-        //verifier si le nom de la recette est inclus dans l'input
-        name = name.toLowerCase().startsWith(value);
-        //verifier si le nom du materiel est inclu dans l'input
-        appliance = appliance.toLowerCase().startsWith(value);
-        //verifier si le nom saisie est inclu dans la description
-        description = description.toLowerCase().startsWith(value);
+    // console.log(recipes);
+    recipesToDisplay = recipes.filter((recipe) => {
+      let { name, appliance, ingredients, description, ustensils } = recipe;
 
-        //verifier si la valeur saisie correspond à l'ustensile
-        ustensils = ustensils.includes(value) ? value : "";
+      //verifier si le nom de la recette est inclus dans l'input
+      let isNameIncludedInReceipe = name
+        .toLowerCase()
+        .includes(inputValue.toLowerCase());
 
-        //mettre les ingrédients dans un tableau et vérifier si la valeur de l'input est incluse dans chacun des tableaux
-        ingredients = ingredients
-          .map((ingredient) => {
-            return ingredient.ingredient;
-          })
-          .includes(value)
-          ? value
-          : "";
+      //verifier si le nom du materiel est inclu dans l'input
+      appliance = appliance.toLowerCase().includes(inputValue.toLowerCase());
+      //verifier si le nom saisie est inclu dans la description
+      description = description
+        .toLowerCase()
+        .startsWith(inputValue.toLowerCase());
 
-        //renvoi la recette s'il y a une correspondance
-        if (name || appliance || description || ustensils || ingredients) {
-          return receipe;
-        }
-      });
-      // console.log("🚀 ~ file: search.js:21 ~ newData ~ newData:", newData);
-      //display filtered data in the receipes container
-      recipesCards(getElement("#recipes"), newData);
+      //verifier si la valeur saisie correspond à l'ustensile
+      ustensils = ustensils.includes(inputValue) ? inputValue : "";
 
-      //if there is no data that matches the input value, display an error message
-      if (newData.length < 1) {
-        const recipes = getElement("#recipes");
-        recipes.innerHTML = `<h3 class="filter-error">
-         Désolé, aucune recette ne correspond à votre recherche
-         </h3>`;
+      //mettre les ingrédients dans un tableau et vérifier si la valeur de l'input est incluse dans chacun des tableaux
+      ingredients = ingredients
+        .map((ingredient) => {
+          return ingredient.ingredient;
+        })
+        .includes(inputValue)
+        ? inputValue
+        : "";
+
+      //renvoi la recette s'il y a une correspondance
+
+      let recipeIsMatching = false;
+      if (
+        isNameIncludedInReceipe ||
+        appliance ||
+        description ||
+        ustensils ||
+        ingredients
+      ) {
+        recipeIsMatching = true;
       }
+
+      return recipeIsMatching;
+    });
+
+    /* Remplir les filtres avec le tableau retourné par recipesToDisplay*/
+    filterAll(recipesToDisplay);
+  }
+  console.log(Array.from(allIngredientTags));
+  // Si l'un des tableaux comporte des éléments , un tag est utilisé.On utilse dans ce cas le tableau 'recipesToDisplay' pour afficher les recettes avec recipesToDisplay comme source de données.
+  if (
+    Array.from(allIngredientTags).length > 0 ||
+    Array.from(allApplianceTags).length > 0 ||
+    Array.from(allUstensilTags).length > 0
+  ) {
+    tagsUsed = true;
+    if (recipesToDisplay.length > 0) {
+      recipesToDisplay = filteredRecipesWithTags(recipesToDisplay);
     } else {
-      //if the input is empty, display all the data
-      recipesCards(getElement("#recipes"), data);
+      recipesToDisplay = filteredRecipesWithTags(recipes);
     }
-  });
+  }
+
+  // SI aucune recherche ne correspond à la regex, on affiche un message d'erreur.
+  if (recipesToDisplay.length > 0) {
+    recipesElement.innerHTML = "";
+    // displayData(recipesToDisplay);
+    recipesCards(recipesElement, recipesToDisplay);
+  } else {
+    // displayData(recipesToDisplay);
+    recipesCards(recipesElement, recipesToDisplay);
+    recipesElement.innerHTML = `<h3 class="filter-error">
+    Désolé, aucune recette ne correspond à votre recherche
+    </h3>`;
+  }
+
+  // Si la barre de recherche est vide ou moins de 3 caractères.
+  if (
+    (searchInput.value === "" || searchInput.value.length < 3) &&
+    tagsUsed === false
+  ) {
+    filterAll(recipes);
+    console.log(filterAll(recipes));
+    recipesCards(recipesElement, recipes);
+  }
 };
+
+searchInput.addEventListener("keyup", () => {
+  searchFilter(getStorageItem("recipes"));
+});

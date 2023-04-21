@@ -1,21 +1,63 @@
-//Add applianceTag
-const addApplianceTag = (applianceId) => {
-  console.log(
-    "🚀 ~ file: arrowDown.js:51 ~ addTag ~ applianceId:",
-    applianceId
-  );
+// import { getElement } from "./utils.js";
+
+//tags already selected
+let ingredientTagAlreadyAdded = false;
+
+//tags container
+const ingredientTag = document.querySelector(".ingredients__tag");
+const applianceTag = document.querySelector(".appliances__tag");
+const ustensilTag = document.querySelector(".ustensils__tag");
+
+//Add tags
+const addTag = (recipeId) => {
+  console.log("🚀 ~ file: arrowDown.js:51 ~ addTag ~ recipeId:", recipeId);
   // console.log("Hello People", index);
   console.log(" 3333");
-  const filterItemAppliances = document.getElementById(applianceId);
+  const filterItemIngredients = document.getElementById(recipeId);
   console.log(
-    "🚀 ~ file: index.js:59 ~ test ~ filterItemAppliances:",
-    filterItemAppliances
+    "🚀 ~ file: index.js:59 ~ test ~ filterItemIngredients:",
+    filterItemIngredients
   );
+
+  const tagIngredientContainer = document.createElement("div");
+  tagIngredientContainer.setAttribute("class", "ingredient__tag");
+
+  const tagIngredient = document.createElement("li");
+  tagIngredient.innerText = filterItemIngredients.innerText;
+  tagIngredient.classList.add("blue__tag");
+
+  //create the delete icon
+  const deleteTagIcon = document.createElement("span");
+  deleteTagIcon.classname = "deleteIcon";
+
+  const deleteIconImg = document.createElement("span");
+  deleteIconImg.className = "fa-regular fa-circle-xmark";
+  deleteIconImg.style.cursor = "pointer";
+  deleteIconImg.style.width = "20px";
+  //remove the tag
+  deleteIconImg.addEventListener("click", () => {
+    tagIngredientContainer.remove();
+
+    searchFilter(getStorageItem("recipes"));
+    return false;
+  });
+
+  ingredientTag.appendChild(tagIngredientContainer);
+  tagIngredientContainer.appendChild(tagIngredient);
+  tagIngredientContainer.appendChild(deleteTagIcon);
+  deleteTagIcon.appendChild(deleteIconImg);
+  searchFilter(getStorageItem("recipes"));
+};
+
+//Add applianceTag
+const addApplianceTag = (applianceId) => {
+  const filterItemAppliances = document.getElementById(applianceId);
 
   const tagApplianceContainer = document.createElement("div");
   tagApplianceContainer.setAttribute("class", "appliance__tag");
 
   const tagAppliance = document.createElement("li");
+
   tagAppliance.innerText = filterItemAppliances.innerText;
   tagAppliance.classList.add("green__tag");
 
@@ -31,11 +73,7 @@ const addApplianceTag = (applianceId) => {
   deleteIconImg.addEventListener("click", () => {
     tagApplianceContainer.remove();
 
-    // filteredRecipesWithTags(getStorageItem("recipes"));
-    recipesCards(
-      getElement("#recipes"),
-      filteredRecipesWithTags(getStorageItem("recipes"))
-    );
+    searchFilter(getStorageItem("recipes"));
     return false;
   });
 
@@ -43,23 +81,13 @@ const addApplianceTag = (applianceId) => {
   tagApplianceContainer.appendChild(tagAppliance);
   tagApplianceContainer.appendChild(deleteTagIcon);
   deleteTagIcon.appendChild(deleteIconImg);
-  recipesCards(
-    getElement("#recipes"),
-    filteredRecipesWithTags(getStorageItem("recipes"))
-  );
-  // filteredRecipesWithTags(getStorageItem("recipes"));
+
+  searchFilter(getStorageItem("recipes"));
 };
 
 //Add applianceTag
 const addUstensilTag = (ustensilId) => {
-  console.log("🚀 ~ file: arrowDown.js:51 ~ addTag ~ ustensilId:", ustensilId);
-  // console.log("Hello People", index);
-  console.log(" 3333");
   const filterItemUstensils = document.getElementById(ustensilId);
-  console.log(
-    "🚀 ~ file: index.js:59 ~ test ~ filterItemUstensils:",
-    filterItemUstensils
-  );
 
   const tagUstensilContainer = document.createElement("div");
   tagUstensilContainer.setAttribute("class", "ustensil__tag");
@@ -80,11 +108,7 @@ const addUstensilTag = (ustensilId) => {
   deleteIconImg.addEventListener("click", () => {
     tagUstensilContainer.remove();
 
-    // filteredRecipesWithTags(getStorageItem("recipes"));
-    recipesCards(
-      getElement("#recipes"),
-      filteredRecipesWithTags(getStorageItem("recipes"))
-    );
+    searchFilter(getStorageItem("recipes"));
     return false;
   });
 
@@ -92,9 +116,6 @@ const addUstensilTag = (ustensilId) => {
   tagUstensilContainer.appendChild(tagUstensil);
   tagUstensilContainer.appendChild(deleteTagIcon);
   deleteTagIcon.appendChild(deleteIconImg);
-  recipesCards(
-    getElement("#recipes"),
-    filteredRecipesWithTags(getStorageItem("recipes"))
-  );
-  // filteredRecipesWithTags(getStorageItem("recipes"));
+
+  searchFilter(getStorageItem("recipes"));
 };

@@ -51,9 +51,9 @@
   box-sizing: border-box;
 }
 
-* {
+/* * {
   box-shadow: 0 0 0 1px red;
-}
+} */
 
 html {
   font-size: 62.5%;
@@ -181,10 +181,19 @@ main .search__button {
 /************************************/
 
 #filters {
-  background: yellow;
-  gap: 2rem;
-  /* justify-content: space-between; */
+  min-height: 5rem;
+  background: #f0eda6;
+  /* background: #ed6454; */
+  /* display: grid;
+  background: rosybrown;
+  grid-template-columns: repeat(3, auto); */
+  /* justify-content: start; */
   display: flex;
+  gap: 2rem;
+  height: auto;
+  /* height: 10rem; */
+  /* justify-content: space-between; */
+  /* display: flex; */
 }
 .filter__ingredients,
 .filter__appliances,
@@ -192,10 +201,12 @@ main .search__button {
   position: relative;
   margin-bottom: 82px;
   height: 53px;
+  background: yellowgreen;
 }
 .filter__ingredients--container,
 .filter__appliances--container,
 .filter__ustensils--container {
+  position: relative;
   /* position: absolute; */
   /* background: #ed6454; */
   width: 17rem;
@@ -206,7 +217,7 @@ main .search__button {
   max-height: 397px;
   overflow: hidden;
   /* overflow-y: scroll; */
-  z-index: 20;
+  /* z-index: 20; */
   /* display: flex; */
 }
 
@@ -221,7 +232,6 @@ main .search__button {
 }
 
 #ingredients-input {
-  /* background: #ed6454; */
   width: 600px;
   background: transparent;
 }
@@ -230,7 +240,6 @@ main .search__button {
 .appliance__list__container--items,
 .ustensil__list__container--items {
   display: grid;
-  /* background: #68d9a4; */
   grid-template-columns: repeat(3, 1fr);
   overflow-y: scroll;
   max-height: 275px;
@@ -276,10 +285,7 @@ main .search__button {
   color: var(--les-petits-plats-white);
   font-size: var(--les-petits-plats-fs-2);
 }
-/* .input__section {
-  background: #ed6454;
-  margin-bottom: 20px;
-} */
+
 .filter__ingredients--input,
 .filter__appliances--input,
 .filter__ustensils--input {
@@ -324,18 +330,13 @@ main .search__button {
   font-size: 14px;
   padding: 10px;
   border-radius: 5px;
-  /* background: yellow; */
   margin-bottom: 20px;
   gap: 5px;
 }
 #selected__tags {
-  background: #ed6454;
   width: 700px;
   display: grid;
-  /* background: yellowgreen; */
   grid-template-columns: repeat(3, 200px);
-  /* grid-template-columns: repeat(3, minmax(200px, 1fr)); */
-  /* gap: 2rem; */
   margin-bottom: 30px;
 }
 .ingredient__tag {
@@ -352,10 +353,8 @@ main .search__button {
 /************************************/
 .recipes__container {
   display: grid;
-  background: yellow;
   grid-template-columns: repeat(3, 1fr);
   gap: 5rem;
-  /* width: 1302px; */
   width: 100%;
   margin: 2.5rem auto 2.5rem auto;
 }
@@ -363,22 +362,40 @@ main .search__button {
 @media (max-width: 900px) {
   .recipes__container {
     grid-template-columns: repeat(2, 1fr);
-    background: #68d9a4;
+    /* background: #68d9a4; */
   }
 }
 @media (max-width: 650px) {
   #filters {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background: #c7bebe;
+  }
+  /*.filter__ingredients,
+  .filter__appliances,
+  .filter__ustensils {
+    position: relative;
+     margin-bottom: 0; 
+    height: 0; 
+    background: yellowgreen;
+  }*/
+
+  .recipe__list__container--items,
+  .appliance__list__container--items,
+  .ustensil__list__container--items {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  #ingredients-input {
+    width: 200px;
+  }
+  .search__input-ingredients {
   }
 }
-
-/* .filter__ingredients,
-.filter__appliances,
-.filter__ustensils {
-  position: relative;
-  margin-bottom: 82px;
-  height: 53px;
-} */
 
 @media (max-width: 600px) {
   .recipes__container {
@@ -396,9 +413,7 @@ main .search__button {
 
 .recipe__card {
   width: 100%;
-  /* width: 40.066rem; */
   height: 40.066rem;
-  /* height: 36.4rem; */
   border-radius: 5px;
   background: var(--les-petits-plats-grey-1);
 }
@@ -415,7 +430,6 @@ main .search__button {
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* height: 38.7rem; */
 }
 
 .recipe__card__description__ingredients {

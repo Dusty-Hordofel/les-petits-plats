@@ -1,5 +1,5 @@
-/*export*/ const recipesCards = (element, recipes) => {
-  element.innerHTML = `<ul class="recipes__container">
+const /*edit*/ recipesCards = (element, recipes) => {
+    element.innerHTML = `<ul class="recipes__container">
     ${recipes
       .map((recipe) => {
         const {
@@ -59,7 +59,7 @@
       .join("")}
     </ul>
     </div>`;
-};
+  };
 
 // return (
 {
