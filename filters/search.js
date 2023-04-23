@@ -7,7 +7,7 @@ const searchFilter = (recipes) => {
   recipesToDisplay = [];
   let inputValue;
 
-  //selectionner tus les tags par type
+  //selectionner tous les tags par type
   const allIngredientTags = document.querySelectorAll(
     ".ingredients__tag .ingredient__tag .blue__tag"
   );
