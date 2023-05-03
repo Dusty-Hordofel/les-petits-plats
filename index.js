@@ -1,5 +1,5 @@
 import { setFilterButton } from "./components/setFilterButtons.js";
-import { getRecipesData } from "./api/api.js";
+// import { getRecipesData } from "./api/api.js";
 import {
   ingredientsList,
   appliancesList,
@@ -9,6 +9,7 @@ import {
 //store data to the local storage
 const storeData = async () => {
   const recipes = await getRecipesData();
+  console.log("🚀 ~ file: index.js:12 ~ storeData ~ recipes:", recipes);
   setStorageItem("recipes", recipes);
 };
 storeData();
@@ -81,11 +82,7 @@ displayUstensilsFilterButton();
 
 //display the list of recipes
 const displayRecipes = () => {
-  // const recipes = await getRecipesData();
-  // const recipes = getStorageItem("recipes");
-  // console.log("🚀 ~ file: index.js:12 ~ displayRecipes ~ recipes:", recipes);
-
-  recipesCards(getElement("#recipes"), recipes);
+  setRecipesCards(getElement("#recipes"), recipes);
 };
 displayRecipes();
 
