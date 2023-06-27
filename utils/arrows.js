@@ -13,16 +13,11 @@ const arrowDown = (e) => {
   if (mediaQuery.matches) {
     getElement(".filter__ingredients--container").style.width = "300px";
     getElement(".filter__ingredients--container").style.height = "auto";
-    // getElement(".filter__ustensils").style.display = "none";
-    // getElement(".filter__appliances").style.display = "none";
   } else {
     getElement(".filter__ingredients--container").style.width = "667px";
     getElement(".filter__ingredients--container").style.height = "auto";
   }
 
-  //remove expanded class to another input
-  // getElement(".filter__appliances--container").style.width = "17rem";
-  // getElement(".filter__ustensils--container").style.width = "17rem";
   //reduce the appliances input container
   arrowApplianceUp();
   //reduce the ustensils input container
@@ -61,8 +56,6 @@ const arrowApplianceDown = () => {
   if (mediaQuery.matches) {
     getElement(".filter__appliances--container").style.width = "300px";
     getElement(".filter__appliances--container").style.height = "auto";
-    // getElement(".filter__ustensils").style.display = "none";
-    // getElement(".filter__ingredients").style.display = "none";
   } else {
     getElement(".filter__appliances--container").style.width = "667px";
     getElement(".filter__appliances--container").style.height = "auto";
@@ -75,8 +68,6 @@ const arrowApplianceDown = () => {
 };
 
 const arrowApplianceUp = () => {
-  console.log("tu cliques sur la flèche");
-
   //show the appliance's button
   getElement(".filter__appliances__title").style.display = "flex";
   //hide appliance's input search
@@ -86,16 +77,9 @@ const arrowApplianceUp = () => {
   //reduce the appliances container
   getElement(".filter__appliances--container").style.width = "17rem";
   getElement(".filter__appliances--container").style.height = "6.9rem";
-  //show
-  // if (mediaQuery.matches) {
-  //   getElement(".filter__ingredients").style.display = "";
-  //   getElement(".filter__ustensils").style.display = "";
-  // }
 };
 
 const arrowUstensilDown = () => {
-  console.log("tu cliques sur la flèche");
-
   //hide the ustensil button
   getElement(".filter__ustensils__title").style.display = "none";
   //display ustensils input
@@ -108,16 +92,11 @@ const arrowUstensilDown = () => {
   if (mediaQuery.matches) {
     getElement(".filter__ustensils--container").style.width = "300px";
     getElement(".filter__ustensils--container").style.height = "auto";
-    // getElement(".filter__ingredients").style.display = "none";
-    // getElement(".filter__appliances").style.display = "none";
   } else {
     getElement(".filter__ustensils--container").style.width = "667px";
     getElement(".filter__ustensils--container").style.height = "auto";
   }
 
-  //display the list of ustensils
-  // getElement(".filter__ingredients--container").style.width = "17rem";
-  // getElement(".filter__appliances--container").style.width = "17rem";
   //reduce the appliances input container
   arrowUp();
   //reduce the ingredients input container
@@ -136,9 +115,4 @@ const arrowUstensilUp = () => {
   //reduce the ustensils container
   getElement(".filter__ustensils--container").style.width = "17rem";
   getElement(".filter__ustensils--container").style.height = "6.9rem";
-  // show
-  // if (mediaQuery.matches) {
-  //   getElement(".filter__ingredients").style.display = "";
-  //   getElement(".filter__appliances").style.display = "";
-  // }
 };

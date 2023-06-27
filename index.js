@@ -12,7 +12,7 @@ const storeData = async () => {
 };
 storeData();
 
-//retrieve stored data in the localStorage
+//retrieve stored data in the localStorage or from local data
 const recipes = getStorageItem("recipes");
 
 //DONE: Afficher le button de filtrage des ingrédients
@@ -39,11 +39,7 @@ displayIngredientsFilterButton();
 //DONE: Afficher le button de filtrage des appareils
 const displayAppliancesFilterButton = () => {
   //mettre en place le button de filtrage des appareils
-  setFilterButton(
-    getElement(".filter__appliances"),
-    "appliances",
-    "Appliances"
-  );
+  setFilterButton(getElement(".filter__appliances"), "appliances", "Appareils");
   //ajouter un écouteur d'évenement sur le bouton appareils (flêche vers le bas)
   getElement(".filter__appliances__title--icon--down").addEventListener(
     "click",
