@@ -77,35 +77,39 @@ const displayRecipes = () => {
 displayRecipes();
 
 // list of ingredients
-export const filteredIngredients = (data, inputValue) => {
-  const ingredients = [
-    ...new Set(
-      data
-        .map((recipe) =>
-          recipe.ingredients.map((ingredient) =>
-            ingredient.ingredient.toLowerCase().trim()
-          )
-        )
-        .flat()
-        .sort()
-    ),
-  ];
+// export const filteredIngredients = (data, inputValue) => {
+//   const ingredients = [
+//     ...new Set(
+//       data
+//         .map((recipe) =>
+//           recipe.ingredients.map((ingredient) =>
+//             ingredient.ingredient.toLowerCase().trim()
+//           )
+//         )
+//         .flat()
+//         .sort()
+//     ),
+//   ];
 
-  // Si on a un element dans l'input, on filtre les ingrédients
-  if (inputValue) {
-    return ingredients.filter((ingredient) =>
-      ingredient.includes(inputValue.toLowerCase().trim())
-    );
-  }
-  // Sinon on retourne tous les ingrédients
-  return ingredients;
-};
+//   // Si on a un element dans l'input, on filtre les ingrédients
+//   if (inputValue) {
+//     return ingredients.filter((ingredient) =>
+//       ingredient.includes(inputValue.toLowerCase().trim())
+//     );
+//   }
+//   // Sinon on retourne tous les ingrédients
+//   return ingredients;
+// };
+
+console.log(ingredientsListToFilter(recipes));
+// console.log(filteredIngredients(recipes));
 
 //afficher la liste des ingrédients dans le DOM: affichage initial sans filtre
 const displayRetrievedIngredients = () => {
   /*set*/ ingredientsList(
     getElement(".filter__ingredients--list"),
-    filteredIngredients(recipes)
+    // filteredIngredients(recipes)
+    ingredientsListToFilter(recipes)
   );
 };
 
@@ -122,11 +126,26 @@ const displayIngredientsList = () => {
     //get the value of the input
     const value = nameInput.value;
     //filter the data based on the value of the input
-    const ingredients = filteredIngredients(recipes, value);
+    const ingredients = ingredientsListToFilter(recipes, value);
     //display filtered data in the receipes container
     ingredientsList(getElement(".filter__ingredients--list"), ingredients);
   });
 };
+// const displayIngredientsList = () => {
+//   //get the form and the input
+//   const form = getElement(".search__input-ingredients");
+//   const nameInput = getElement("#ingredients-input");
+
+//   //recuperer la valeur de l'input et afficher la liste des ingrédients
+//   form.addEventListener("keyup", function () {
+//     //get the value of the input
+//     const value = nameInput.value;
+//     //filter the data based on the value of the input
+//     const ingredients = filteredIngredients(recipes, value);
+//     //display filtered data in the receipes container
+//     ingredientsList(getElement(".filter__ingredients--list"), ingredients);
+//   });
+// };
 
 displayIngredientsList();
 
