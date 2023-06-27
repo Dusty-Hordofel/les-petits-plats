@@ -36,6 +36,10 @@ const getStorageItem = (item) => {
     storageItem = JSON.parse(localStorage.getItem(item));
   } else {
     storageItem = allRecipesData || [];
+    // console.log(
+    //   "🚀 ~ file: utils.js:39 ~ getStorageItem ~ allRecipesData:",
+    //   allRecipesData
+    // );
   }
   // storageItem
   //   ? (storageItem = JSON.parse(localStorage.getItem(item)))

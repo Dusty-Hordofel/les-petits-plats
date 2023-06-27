@@ -1194,3 +1194,7 @@ const recipeDescription = (ingredients) => {
     .join("");
 };
 ```
+
+### 21. Projet-avec-la-boucle-avancée-(map)
+
+- utilisation des [algorithm avancées utilisant la méthode javascript map](algo/algoFn.js) dans tout le project
