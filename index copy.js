@@ -17,6 +17,7 @@ const storeData = async () => {
   setStorageItem("recipes", recipes);
 };
 storeData();
+
 //retrieve stored data in the localStorage
 const recipes = getStorageItem("recipes");
 // console.log(getStorageItem("recipes"));

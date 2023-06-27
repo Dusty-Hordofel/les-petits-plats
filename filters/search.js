@@ -8,13 +8,13 @@ const searchFilter = (recipes) => {
   let inputValue;
 
   //selectionner tous les tags par type
-  const allIngredientTags = document.querySelectorAll(
+  const allIngredientTags = getAllElement(
     ".ingredients__tag .ingredient__tag .blue__tag"
   );
-  const allApplianceTags = document.querySelectorAll(
+  const allApplianceTags = getAllElement(
     ".appliances__tag .appliance__tag .green__tag"
   );
-  const allUstensilTags = document.querySelectorAll(
+  const allUstensilTags = getAllElement(
     ".ustensils__tag .ustensil__tag .red__tag"
   );
 
