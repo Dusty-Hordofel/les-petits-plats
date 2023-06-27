@@ -21,7 +21,7 @@ const recipes = getStorageItem("recipes");
 const displayIngredientsFilterButton = () => {
   //mettre en place le button de filtrage des ingrédients
   setFilterButton(
-    document.querySelector(".filter__ingredients"),
+    getElement(".filter__ingredients"),
     "ingredients",
     "Ingredients"
   );
@@ -42,7 +42,7 @@ displayIngredientsFilterButton();
 const displayAppliancesFilterButton = () => {
   //mettre en place le button de filtrage des appareils
   setFilterButton(
-    document.querySelector(".filter__appliances"),
+    getElement(".filter__appliances"),
     "appliances",
     "Appliances"
   );
@@ -62,11 +62,7 @@ displayAppliancesFilterButton();
 //DONE: Afficher le button de filtrage des ustensils
 const displayUstensilsFilterButton = () => {
   //mettre en place le button de filtrage des ustensils
-  setFilterButton(
-    document.querySelector(".filter__ustensils"),
-    "ustensils",
-    "Ustensiles"
-  );
+  setFilterButton(getElement(".filter__ustensils"), "ustensils", "Ustensiles");
   //ajouter un écouteur d'évenement sur le bouton ustensils (flêche vers le bas)
   getElement(".filter__ustensils__title--icon--down").addEventListener(
     "click",

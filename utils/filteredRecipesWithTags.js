@@ -2,14 +2,14 @@
 const filteredRecipesWithTags = (recipesToFilter) => {
   // Faire des tableaux en récupérant la liste de chaque élément via le DOM
   const taggedIngredientsDOM = Array.from(
-    document.querySelectorAll(".ingredients__tag .ingredient__tag .blue__tag")
+    getAllElement(".ingredients__tag .ingredient__tag .blue__tag")
   );
 
   const taggedAppliancesDOM = Array.from(
-    document.querySelectorAll(".appliances__tag .appliance__tag .green__tag")
+    getAllElement(".appliances__tag .appliance__tag .green__tag")
   );
   const taggedustensilsDOM = Array.from(
-    document.querySelectorAll(".ustensils__tag .ustensil__tag .red__tag")
+    getAllElement(".ustensils__tag .ustensil__tag .red__tag")
   );
 
   let recipesToDisplay = []; //liste des ingrédients à afficher
@@ -142,9 +142,9 @@ const filterAll = (recipes) => {
   recipes.map((recipe) => {
     //gestion des ingredients
     //si l'ingrédient existe déjà , on ne l'ajoute pas
-    const ingredientsTag = [
-      ...document.querySelectorAll(".ingredient__tag"),
-    ].map((itag) => itag.innerText);
+    const ingredientsTag = [...getAllElement(".ingredient__tag")].map(
+      (itag) => itag.innerText
+    );
 
     //map sur les ingredients de la recette
     recipe.ingredients.map(({ ingredient }, index) => {
@@ -171,7 +171,7 @@ const filterAll = (recipes) => {
 
     //gestion des appareils
     //si l'appareil existe déjà , on ne l'ajoute pas
-    const appliancesTag = [...document.querySelectorAll(".appliance__tag")].map(
+    const appliancesTag = [...getAllElement(".appliance__tag")].map(
       (applianceTag) => applianceTag.innerText
     );
 
@@ -197,7 +197,7 @@ const filterAll = (recipes) => {
 
     //gestion des ustensiles
     //Si l'ustensile existe déjà , on ne l'ajoute pas
-    const ustensilsTag = [...document.querySelectorAll(".ustensil__tag")].map(
+    const ustensilsTag = [...getAllElement(".ustensil__tag")].map(
       (utag) => utag.innerText
     );
 

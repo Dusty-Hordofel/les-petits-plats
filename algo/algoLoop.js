@@ -68,6 +68,7 @@ let ustensilsArray = (recipes, inputValue) => {
   // Sinon on retourne tous les ustensils
   return allUstensils;
 };
+
 let appliancesArray = (recipes, inputValue) => {
   let allAppliances = [];
   let applianceInput = inputValue.toLowerCase().trim();
