@@ -1,5 +1,4 @@
 import { setFilterButton } from "./components/setFilterButtons.js";
-// import { getRecipesData } from "./api/api.js";
 import {
   ingredientsList,
   appliancesList,
@@ -9,7 +8,6 @@ import {
 //store data to the local storage
 const storeData = async () => {
   const recipes = await getRecipesData();
-  console.log("🚀 ~ file: index.js:12 ~ storeData ~ recipes:", recipes);
   setStorageItem("recipes", recipes);
 };
 storeData();
@@ -104,10 +102,6 @@ export const filteredIngredients = (data, inputValue) => {
     );
   }
   // Sinon on retourne tous les ingrédients
-  // console.log(
-  //   "🚀 ~ file: index.js:72 ~ displayFilterIngredients ~ ingredients:",
-  //   ingredients
-  // );
   return ingredients;
 };
 
@@ -117,13 +111,8 @@ const displayRetrievedIngredients = () => {
     getElement(".filter__ingredients--list"),
     filteredIngredients(recipes)
   );
-  // );
-  // const ingredients = filteredIngredients(recipes);
-  //display filtered data in the receipes container
-  // ingredientsList(getElement(".filter__ingredients--list"), ingredients);
 };
 
-// console.log(displayRetrievedIngredients());
 displayRetrievedIngredients();
 
 //afficher la liste des ingrédients dans le DOM: affichage initial avec ou sans filtre
@@ -132,17 +121,12 @@ const displayIngredientsList = () => {
   const form = getElement(".search__input-ingredients");
   const nameInput = getElement("#ingredients-input");
 
-  // list of ingredients
-  // const recipes = await getRecipesData();
-  // const recipes = getStorageItem("recipes");
-
   //recuperer la valeur de l'input et afficher la liste des ingrédients
   form.addEventListener("keyup", function () {
     //get the value of the input
     const value = nameInput.value;
     //filter the data based on the value of the input
     const ingredients = filteredIngredients(recipes, value);
-    // console.log("🚀 ~ file: index.js:112 ~ ingredients:", ingredients);
     //display filtered data in the receipes container
     ingredientsList(getElement(".filter__ingredients--list"), ingredients);
   });
@@ -168,7 +152,6 @@ const displayAppliancesList = () => {
   const nameInput = getElement("#appliances-input");
 
   // list of ingredients
-  // const recipes = await getRecipesData();
   const recipes = getStorageItem("recipes");
 
   //recuperer la valeur de l'input et afficher la liste des ingrédients
@@ -202,7 +185,6 @@ const displayUstensilsList = () => {
   const nameInput = getElement("#ustensils-input");
 
   // list of ingredients
-  // const recipes = await getRecipesData();
   const recipes = getStorageItem("recipes");
 
   //recuperer la valeur de l'input et afficher la liste des ingrédients
