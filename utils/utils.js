@@ -29,13 +29,13 @@ const formatPrice = (price) => {
 };
 
 //get item in the local storage
-const getStorageItem = (item) => {
+const getStorageItem = (item, data) => {
   let storageItem = localStorage.getItem(item);
 
   if (storageItem && storageItem !== undefined) {
     storageItem = JSON.parse(localStorage.getItem(item));
   } else {
-    storageItem = allRecipesData || [];
+    storageItem = data || [];
     // console.log(
     //   "🚀 ~ file: utils.js:39 ~ getStorageItem ~ allRecipesData:",
     //   allRecipesData

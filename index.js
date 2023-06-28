@@ -13,7 +13,7 @@ const storeData = async () => {
 storeData();
 
 //retrieve stored data in the localStorage or from local data
-const recipes = getStorageItem("recipes");
+const recipes = getStorageItem("recipes", allRecipesData);
 
 //DONE: Afficher le button de filtrage des ingrédients
 const displayIngredientsFilterButton = () => {
