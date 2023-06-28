@@ -35,7 +35,11 @@ const getStorageItem = (item) => {
   if (storageItem && storageItem !== undefined) {
     storageItem = JSON.parse(localStorage.getItem(item));
   } else {
-    storageItem = [];
+    storageItem = allRecipesData || [];
+    // console.log(
+    //   "🚀 ~ file: utils.js:39 ~ getStorageItem ~ allRecipesData:",
+    //   allRecipesData
+    // );
   }
   // storageItem
   //   ? (storageItem = JSON.parse(localStorage.getItem(item)))
@@ -49,13 +53,3 @@ const setStorageItem = (name, item) => {
   //name of my key and the item
   localStorage.setItem(name, JSON.stringify(item)); //La méthode JSON.stringify() convertit une valeur JavaScript en chaîne JSON. we can only store data as a string in localStorage
 };
-
-// export {
-//   allPhotographerInfo,
-//   allMedias,
-//   getElement,
-//   getAllElement,
-//   formatPrice,
-//   getStorageItem,
-//   setStorageItem,
-// };
