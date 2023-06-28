@@ -235,6 +235,12 @@ main .search__button {
   animation: title 0.5s ease-in-out;
 }
 
+.recipe__container--item,
+.appliance__container--item,
+.ustensil__container--item {
+  cursor: pointer;
+}
+
 .filter__ingredients__title,
 .filter__appliances__title,
 .filter__ustensils__title {
@@ -242,6 +248,7 @@ main .search__button {
   color: var(--les-petits-plats-white);
   font-weight: var(--les-petits-plats-fw-700);
   width: 100%;
+  cursor: pointer;
 }
 .filter__ingredients__title h2,
 .filter__appliances__title h2,
