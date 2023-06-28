@@ -82,10 +82,6 @@ const displayRetrievedIngredients = () => {
     getElement(".filter__ingredients--list"),
     ingredientsArray(recipes)
   );
-  // );
-  // const ingredients = ingredientsArray(recipes);
-  //display filtered data in the receipes container
-  // ingredientsList(getElement(".filter__ingredients--list"), ingredients);
 };
 
 displayRetrievedIngredients();
@@ -102,7 +98,6 @@ const displayIngredientsList = () => {
     const value = nameInput.value;
     //filter the data based on the value of the input
     const ingredients = ingredientsArray(recipes, value);
-    // console.log("🚀 ~ file: index.js:112 ~ ingredients:", ingredients);
     //display filtered data in the receipes container
     ingredientsList(getElement(".filter__ingredients--list"), ingredients);
   });
