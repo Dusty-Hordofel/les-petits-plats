@@ -189,7 +189,7 @@ const filterAll = (recipes) => {
       applianceItem.setAttribute("id", recipe.appliance);
       applianceItem.innerText = recipe.appliance;
       appliancesListDOM.appendChild(applianceItem);
-      console.log(applianceItem);
+      // console.log(applianceItem);
       applianceItem.addEventListener("click", () => {
         addApplianceTag(applianceItem.textContent);
       });
@@ -214,7 +214,7 @@ const filterAll = (recipes) => {
         ustensilItem.setAttribute("id", ustensil);
         // ustensilsBloc.appendChild(filterItem);
         ustensilsListDOM.appendChild(ustensilItem);
-        console.log(ustensilItem);
+        // console.log(ustensilItem);
         ustensilItem.addEventListener("click", () => {
           addUstensilTag(ustensilItem.textContent);
         });

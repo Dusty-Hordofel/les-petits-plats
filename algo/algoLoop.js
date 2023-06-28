@@ -1,6 +1,7 @@
 let ingredientsArray = (recipes, inputValue) => {
   let allIngredients = [];
-  let ingredientInput = inputValue.toLowerCase().trim();
+  let ingredientInput = inputValue;
+  // let ingredientInput = inputValue.toLowerCase().trim();
 
   for (const recipe of recipes) {
     for (const ingredient of recipe.ingredients) {
@@ -31,14 +32,10 @@ let ingredientsArray = (recipes, inputValue) => {
   return allIngredients;
 };
 
-console.log(
-  "🚀 ~ file: algoLoop.js:1780 ~ ingredientsArray ~ ingredientsArray:",
-  ingredientsArray(allRecipesData, "Lait de coco")
-);
-
 let ustensilsArray = (recipes, inputValue) => {
   let allUstensils = [];
-  let ustensilInput = inputValue.toLowerCase().trim();
+  let ustensilInput = inputValue;
+  // let ustensilInput = inputValue.toLowerCase().trim();
 
   for (const recipe of recipes) {
     for (const ustensil of recipe.ustensils) {
@@ -68,25 +65,42 @@ let ustensilsArray = (recipes, inputValue) => {
   // Sinon on retourne tous les ustensils
   return allUstensils;
 };
+// console.log(
+//   "🚀 ~ file: algoLoop.js:81 ~ ustensilsArray ~ ustensilsArray:",
+//   ustensilsArray(allRecipesData)
+// );
 
 let appliancesArray = (recipes, inputValue) => {
   let allAppliances = [];
-  let applianceInput = inputValue.toLowerCase().trim();
+  let applianceInput = inputValue;
 
   for (const recipe of recipes) {
     const currentAppliance = recipe.appliance.toLowerCase().trim();
     if (allAppliances.length === 0) {
       allAppliances.push(currentAppliance);
+    } else {
+      let isKeywordIn = false;
+      for (const itemInUstensils of allAppliances) {
+        if (itemInUstensils === currentAppliance) {
+          isKeywordIn = true;
+        }
+      }
+      if (!isKeywordIn) {
+        allAppliances.push(currentAppliance);
+      }
     }
   }
-  //Si on a un element dans l'input, on filtre les appareils
+
+  // Si on a un element dans l'input, on filtre les ustensils
   if (inputValue) {
     return allAppliances.filter((ustensil) =>
       ustensil.includes(applianceInput.toLowerCase().trim())
     );
   }
-  // Sinon on retourne tous les appareils
+  // Sinon on retourne tous les ustensils
   return allAppliances;
 };
-
-getStorageItem("recipes");
+// console.log(
+//   "🚀 ~ file: algoLoop.js:166 ~ appliancesArray ~ appliancesArray:",
+//   appliancesArray(allRecipesData)
+// );

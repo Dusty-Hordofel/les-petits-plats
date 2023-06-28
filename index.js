@@ -76,41 +76,16 @@ const displayRecipes = () => {
 };
 displayRecipes();
 
-// list of ingredients
-// export const filteredIngredients = (data, inputValue) => {
-//   const ingredients = [
-//     ...new Set(
-//       data
-//         .map((recipe) =>
-//           recipe.ingredients.map((ingredient) =>
-//             ingredient.ingredient.toLowerCase().trim()
-//           )
-//         )
-//         .flat()
-//         .sort()
-//     ),
-//   ];
-
-//   // Si on a un element dans l'input, on filtre les ingrédients
-//   if (inputValue) {
-//     return ingredients.filter((ingredient) =>
-//       ingredient.includes(inputValue.toLowerCase().trim())
-//     );
-//   }
-//   // Sinon on retourne tous les ingrédients
-//   return ingredients;
-// };
-
-console.log(ingredientsListToFilter(recipes));
-// console.log(filteredIngredients(recipes));
-
 //afficher la liste des ingrédients dans le DOM: affichage initial sans filtre
 const displayRetrievedIngredients = () => {
   /*set*/ ingredientsList(
     getElement(".filter__ingredients--list"),
-    // filteredIngredients(recipes)
-    ingredientsListToFilter(recipes)
+    ingredientsArray(recipes)
   );
+  // );
+  // const ingredients = ingredientsArray(recipes);
+  //display filtered data in the receipes container
+  // ingredientsList(getElement(".filter__ingredients--list"), ingredients);
 };
 
 displayRetrievedIngredients();
@@ -126,26 +101,12 @@ const displayIngredientsList = () => {
     //get the value of the input
     const value = nameInput.value;
     //filter the data based on the value of the input
-    const ingredients = ingredientsListToFilter(recipes, value);
+    const ingredients = ingredientsArray(recipes, value);
+    // console.log("🚀 ~ file: index.js:112 ~ ingredients:", ingredients);
     //display filtered data in the receipes container
     ingredientsList(getElement(".filter__ingredients--list"), ingredients);
   });
 };
-// const displayIngredientsList = () => {
-//   //get the form and the input
-//   const form = getElement(".search__input-ingredients");
-//   const nameInput = getElement("#ingredients-input");
-
-//   //recuperer la valeur de l'input et afficher la liste des ingrédients
-//   form.addEventListener("keyup", function () {
-//     //get the value of the input
-//     const value = nameInput.value;
-//     //filter the data based on the value of the input
-//     const ingredients = filteredIngredients(recipes, value);
-//     //display filtered data in the receipes container
-//     ingredientsList(getElement(".filter__ingredients--list"), ingredients);
-//   });
-// };
 
 displayIngredientsList();
 
@@ -154,7 +115,7 @@ const displayRetrievedAppliances = () => {
   // console.log(
   appliancesList(
     getElement(".filter__appliances--list"),
-    applianceListToFilter(recipes)
+    appliancesArray(recipes)
   );
   // );
 };
@@ -174,7 +135,7 @@ const displayAppliancesList = () => {
     //get the value of the input
     const value = nameInput.value;
     //filter the data based on the value of the input
-    const appliances = applianceListToFilter(recipes, value);
+    const appliances = appliancesArray(recipes, value);
     //display filtered data in the receipes container
     appliancesList(getElement(".filter__appliances--list"), appliances);
   });
@@ -187,7 +148,7 @@ const displayRetrievedUstensils = () => {
   // console.log(
   ustensilsList(
     getElement(".filter__ustensils--list"),
-    ustensilsListToFilter(recipes)
+    ustensilsArray(recipes)
   );
   // );
 };
@@ -207,7 +168,7 @@ const displayUstensilsList = () => {
     //get the value of the input
     const value = nameInput.value;
     //filter the data based on the value of the input
-    const ustensils = ustensilsListToFilter(recipes, value);
+    const ustensils = ustensilsArray(recipes, value);
     //display filtered data in the receipes container
     appliancesList(getElement(".filter__ustensils--list"), ustensils);
   });

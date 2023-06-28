@@ -1201,4 +1201,4 @@ const recipeDescription = (ingredients) => {
 
 ### 22. Projet-avec-la-boucle-native-(map)
 
-- utilisation des [algorithm avancées utilisant la méthode javascript map](algo/algoLoop.js) dans tout le project
+- utilisation des [algorithm native utilisant la méthode javascript for](algo/algoLoop.js) dans tout le project.
