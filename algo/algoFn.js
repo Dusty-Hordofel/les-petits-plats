@@ -1800,10 +1800,10 @@ const ingredientsListToFilter = (data, inputValue) => {
   // Sinon on retourne tous les ingrédients
   return ingredients;
 };
-console.log(
-  "🚀 ~ file: algoFn.js:26 ~ ingredientsListToFilter ~ ingredientsListToFilter:",
-  ingredientsListToFilter(allRecipesData, "Lait de coco")
-);
+// console.log(
+//   "🚀 ~ file: algoFn.js:26 ~ ingredientsListToFilter ~ ingredientsListToFilter:",
+//   ingredientsListToFilter(allRecipesData, "Lait de coco")
+// );
 
 // list of APPLIANCE
 const applianceListToFilter = (data, inputValue) => {
@@ -1822,6 +1822,10 @@ const applianceListToFilter = (data, inputValue) => {
   // Sinon on retourne tous les ingrédients
   return appliances;
 };
+// console.log(
+//   "🚀 ~ file: algoFn.js:1825 ~ applianceListToFilter ~ applianceListToFilter:",
+//   applianceListToFilter(getStorageItem("recipes"))
+// );
 
 // list of USTENSILS
 const ustensilsListToFilter = (data, inputValue) => {
