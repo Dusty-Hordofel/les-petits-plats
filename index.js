@@ -76,43 +76,14 @@ const displayRecipes = () => {
 };
 displayRecipes();
 
-// list of ingredients
-// export const filteredIngredients = (data, inputValue) => {
-//   const ingredients = [
-//     ...new Set(
-//       data
-//         .map((recipe) =>
-//           recipe.ingredients.map((ingredient) =>
-//             ingredient.ingredient.toLowerCase().trim()
-//           )
-//         )
-//         .flat()
-//         .sort()
-//     ),
-//   ];
-
-//   // Si on a un element dans l'input, on filtre les ingrédients
-//   if (inputValue) {
-//     return ingredients.filter((ingredient) =>
-//       ingredient.includes(inputValue.toLowerCase().trim())
-//     );
-//   }
-//   // Sinon on retourne tous les ingrédients
-//   // console.log(
-//   //   "🚀 ~ file: index.js:72 ~ displayFilterIngredients ~ ingredients:",
-//   //   ingredients
-//   // );
-//   return ingredients;
-// };
-
 //afficher la liste des ingrédients dans le DOM: affichage initial sans filtre
 const displayRetrievedIngredients = () => {
   /*set*/ ingredientsList(
     getElement(".filter__ingredients--list"),
-    filteredIngredients(recipes)
+    ingredientsArray(recipes)
   );
   // );
-  // const ingredients = filteredIngredients(recipes);
+  // const ingredients = ingredientsArray(recipes);
   //display filtered data in the receipes container
   // ingredientsList(getElement(".filter__ingredients--list"), ingredients);
 };
@@ -130,27 +101,12 @@ const displayIngredientsList = () => {
     //get the value of the input
     const value = nameInput.value;
     //filter the data based on the value of the input
-    const ingredients = filteredIngredients(recipes, value);
+    const ingredients = ingredientsArray(recipes, value);
     // console.log("🚀 ~ file: index.js:112 ~ ingredients:", ingredients);
     //display filtered data in the receipes container
     ingredientsList(getElement(".filter__ingredients--list"), ingredients);
   });
 };
-// const displayIngredientsList = () => {
-//   //get the form and the input
-//   const form = getElement(".search__input-ingredients");
-//   const nameInput = getElement("#ingredients-input");
-
-//   //recuperer la valeur de l'input et afficher la liste des ingrédients
-//   form.addEventListener("keyup", function () {
-//     //get the value of the input
-//     const value = nameInput.value;
-//     //filter the data based on the value of the input
-//     const ingredients = filteredIngredients(recipes, value);
-//     //display filtered data in the receipes container
-//     ingredientsList(getElement(".filter__ingredients--list"), ingredients);
-//   });
-// };
 
 displayIngredientsList();
 

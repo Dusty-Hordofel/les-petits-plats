@@ -70,8 +70,6 @@ let ustensilsArray = (recipes, inputValue) => {
 //   ustensilsArray(allRecipesData)
 // );
 
-console.log("🚀 ~ file: algoLoop.js:102 ~ allRecipesData:", allRecipesData);
-
 let appliancesArray = (recipes, inputValue) => {
   let allAppliances = [];
   let applianceInput = inputValue;
@@ -102,7 +100,7 @@ let appliancesArray = (recipes, inputValue) => {
   // Sinon on retourne tous les ustensils
   return allAppliances;
 };
-console.log(
-  "🚀 ~ file: algoLoop.js:166 ~ appliancesArray ~ appliancesArray:",
-  appliancesArray(allRecipesData)
-);
+// console.log(
+//   "🚀 ~ file: algoLoop.js:166 ~ appliancesArray ~ appliancesArray:",
+//   appliancesArray(allRecipesData)
+// );
