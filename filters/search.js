@@ -36,10 +36,6 @@ const searchFilter = (recipes) => {
 
       //verifier si la valeur saisie correspond à l'ustensile
       ustensils = ustensils.includes(inputValue) ? inputValue : "";
-      console.log(
-        "🚀 ~ file: search.js:39 ~ recipesToDisplay=recipes.filter ~ ustensils:",
-        ustensils
-      );
 
       //mettre les ingrédients dans un tableau et vérifier si la valeur de l'input est incluse dans chacun des tableaux
       ingredients = ingredients
@@ -69,7 +65,6 @@ const searchFilter = (recipes) => {
     /* Remplir les filtres avec le tableau retourné par recipesToDisplay*/
     filterAll(recipesToDisplay);
   }
-  console.log(Array.from(allIngredientTags));
   // Si l'un des tableaux comporte des éléments , un tag est utilisé.On utilse dans ce cas le tableau 'recipesToDisplay' pour afficher les recettes avec recipesToDisplay comme source de données.
   if (
     Array.from(allIngredientTags).length > 0 ||
