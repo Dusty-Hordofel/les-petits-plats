@@ -10,14 +10,7 @@ const ustensilTag = document.querySelector(".ustensils__tag");
 
 //Add tags
 const addTag = (recipeId) => {
-  console.log("🚀 ~ file: arrowDown.js:51 ~ addTag ~ recipeId:", recipeId);
-  // console.log("Hello People", index);
-  console.log(" 3333");
   const filterItemIngredients = document.getElementById(recipeId);
-  console.log(
-    "🚀 ~ file: index.js:59 ~ test ~ filterItemIngredients:",
-    filterItemIngredients
-  );
 
   const tagIngredientContainer = document.createElement("div");
   tagIngredientContainer.setAttribute("class", "ingredient__tag");

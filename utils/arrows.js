@@ -42,8 +42,6 @@ const arrowUp = () => {
 };
 
 const arrowApplianceDown = () => {
-  console.log("tu cliques sur la flèche");
-
   //hide the appliance button
   getElement(".filter__appliances__title").style.display = "none";
   //display appliances input
@@ -104,8 +102,6 @@ const arrowUstensilDown = () => {
 };
 
 const arrowUstensilUp = () => {
-  console.log("tu cliques sur la flèche");
-
   //show the ustensil's button
   getElement(".filter__ustensils__title").style.display = "flex";
   //hide ustensil's input search
