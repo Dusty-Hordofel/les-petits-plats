@@ -1,6 +1,6 @@
 let form = getElement(".search__input-container");
 let searchInput = getElement(".search__input");
-const recipesElement = getElement("#recipes");
+const recipesElement = getElement("#recipes"); //recettes
 
 const searchFilter = (recipes) => {
   let tagsUsed = false;
@@ -26,15 +26,15 @@ const searchFilter = (recipes) => {
     recipesToDisplay = recipes.filter((recipe) => {
       let { name, appliance, ingredients, description, ustensils } = recipe;
 
-      //verifier si le nom de la recette est inclus dans l'input
+      //verifier si la valeur saisie correspond à un nom de recette
       let isNameIncludedInReceipe = name.toLowerCase().includes(inputValue);
 
-      //verifier si le nom du materiel est inclu dans l'input
+      //verifier si la valeur saisie correspond à un appareil
       appliance = appliance.toLowerCase().includes(inputValue);
-      //verifier si le nom saisie est inclu dans la description
+      //verifier si la valeur saisie est incluse dans la description
       description = description.toLowerCase().includes(inputValue);
 
-      //verifier si la valeur saisie correspond à l'ustensile
+      //verifier si la valeur saisie correspond à un ustensile
       ustensils = ustensils.includes(inputValue) ? inputValue : "";
 
       //mettre les ingrédients dans un tableau et vérifier si la valeur de l'input est incluse dans chacun des tableaux
@@ -77,14 +77,15 @@ const searchFilter = (recipes) => {
     } else {
       recipesToDisplay = filteredRecipesWithTags(recipes);
     }
-  }
+  } //Array.from permet de transformer un objet en tableau
 
-  // SI aucune recherche ne correspond à la regex, on affiche un message d'erreur.
+  // Si le tableau recipesToDisplay n'est pas vide, on affiche les recettes.
   if (recipesToDisplay.length > 0) {
     recipesElement.innerHTML = "";
     // displayData(recipesToDisplay);
-    setRecipesCards(recipesElement, recipesToDisplay);
+    setRecipesCards(recipesElement, recipesToDisplay); //afficher les recettes
   } else {
+    // SI aucune recherche ne correspond à la regex, on affiche un message d'erreur.
     // displayData(recipesToDisplay);
     setRecipesCards(recipesElement, recipesToDisplay);
     recipesElement.innerHTML = `<h3 class="filter-error">
@@ -98,7 +99,7 @@ const searchFilter = (recipes) => {
     tagsUsed === false
   ) {
     filterAll(recipes);
-    console.log(filterAll(recipes));
+    // console.log(filterAll(recipes));
     setRecipesCards(recipesElement, recipes);
   }
 };

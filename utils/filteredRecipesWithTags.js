@@ -58,8 +58,8 @@ const filteredRecipesWithTags = (recipesToFilter) => {
     //Obtenir la liste de tous les ustensiles contenu dans les recettes grace à  list des recettes en paramètre
     ustensilsInTheRecipe = recipe.ustensils.map((ustensil) => ustensil);
 
-    //vérifier si l'ingrédient de la recette est contenu dans le tableau des tags des ingrédients
-    // check if ingredientsInTheRecipe contains tagged ingredients and count them
+    //vérifier si l'ingrédient de la recette est contenu dans le tableau
+    //des tags des ingrédients check if ingredientsInTheRecipe contains tagged ingredients and count them
     if (taggedIngredients.length > 0) {
       taggedIngredients.forEach((taggedIngredient) => {
         if (ingredientsInTheRecipe.includes(taggedIngredient)) {
@@ -67,7 +67,9 @@ const filteredRecipesWithTags = (recipesToFilter) => {
         }
       });
     }
-    //si le tableau des tags des appareils contient un ou des appareils, on vérifie que les appareils des recettes contiennent les tags des appareils
+    //si le tableau des tags des appareils contient un ou des
+    //appareils, on vérifie que les appareils des recettes contiennent
+    //les tags des appareils
     if (taggedAppliances.length > 0) {
       taggedAppliances.forEach((taggedAppliance) => {
         if (appliancesInTheRecipe.includes(taggedAppliance)) {
@@ -89,18 +91,21 @@ const filteredRecipesWithTags = (recipesToFilter) => {
       ingredientIsMatching = true;
     }
 
-    //si le tableau des tags n'est pas vide et que le nombre d'appareils des recettes correspondant aux tags est supérieur à 0, alors applianceIsMatching = true
+    //si le tableau des tags n'est pas vide et que le nombre d'appareils
+    //des recettes correspondant aux tags est supérieur à 0, alors applianceIsMatching = true
     if (taggedAppliances.length > 0) {
       if (appliancesMatching > 0) {
         applianceIsMatching = true;
       }
     } else applianceIsMatching = true;
-    //si le nombre d'ustensils taggés est égal au nombre d'ustensils des recettes correspondant aux tags, alors ustensilIsMatching = true
+    //si le nombre d'ustensils taggés est égal au nombre d'ustensils
+    //des recettes correspondant aux tags, alors ustensilIsMatching = true
     if (ustensilsMatching === taggedUstensils.length) {
       ustensilIsMatching = true;
     }
 
-    // if the recipe is matching, we add it to the array of recipes to display
+    // if the recipe is matching, we add it to the array of recipes
+    //to display
     if (
       ingredientIsMatching === true &&
       applianceIsMatching === true &&
@@ -116,9 +121,12 @@ const filteredRecipesWithTags = (recipesToFilter) => {
 };
 // filteredRecipesWithTags();
 
-//FAIT: Empecher l'ajout de tags identiques,mettre à jour la liste (recettes, ingredients, appareils, ustensiles) à chaque ajout de tag, afficher les recettes filtrées
+//FAIT: Empecher l'ajout de tags identiques,mettre à jour la liste
+//(recettes, ingredients, appareils, ustensiles) à chaque ajout de tag,
+//afficher les recettes filtrées
 const filterAll = (recipes) => {
-  //récupération de la liste des ingredients, des appareils et des ustensiles
+  //récupération de la liste des ingredients, des appareils et
+  //des ustensiles
   const ingredientsListDOM = document.querySelector(
     ".recipe__list__container--items"
   );
@@ -148,7 +156,8 @@ const filterAll = (recipes) => {
 
     //map sur les ingredients de la recette
     recipe.ingredients.map(({ ingredient }, index) => {
-      //si l'ingrédient n'est pas dans le tableau des tags et n'est pas dans le tableau des ingredients
+      //si l'ingrédient n'est pas dans le tableau des tags et n'est
+      //pas dans le tableau des ingredients
       if (
         !ingredientsTag.includes(ingredient) &&
         !ingredientsList.includes(ingredient)

@@ -1202,3 +1202,26 @@ const recipeDescription = (ingredients) => {
 ### 22. Projet-avec-la-boucle-native-(map)
 
 - utilisation des [algorithm native utilisant la méthode javascript for](algo/algoLoop.js) dans tout le project.
+
+### 23. Install the linter
+
+```bash
+$ npm install eslint --save-dev
+$ npm init @eslint/config
+```
+
+- add script in package.json
+
+```json
+{
+  "scripts": {
+    "lint": "eslint ."
+  }
+}
+```
+
+- run eslint
+
+```js
+$npm run lint
+```
