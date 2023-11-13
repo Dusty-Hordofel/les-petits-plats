@@ -25,6 +25,7 @@ const arrowDown = (e) => {
 };
 
 const arrowUp = () => {
+  console.log("second");
   //show the ingredient's button
   getElement(".filter__ingredients__title").style.display = "flex";
   //hide ingredient's input search
